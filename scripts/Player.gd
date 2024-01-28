@@ -12,6 +12,7 @@ const JUMP_VELOCITY: int = -1800 # The height of the jump
 const GRAVITY: int = 5000 # The acceleration of gravity
 
 var double_jump: int = 1 # Count the number of jump when the player jump
+var touch_ground: bool = true
 
 func _physics_process(delta):
 	set_animation()
@@ -21,17 +22,19 @@ func _physics_process(delta):
 		jump_buffer_timer.start()
 
 	if is_on_floor():
+		touch_ground = true
 		double_jump = 1
 		coyote_timer.start()
-		if !jump_buffer_timer.is_stopped() or Input.is_action_just_pressed("jump"):
+		if !jump_buffer_timer.is_stopped():
 			jump()
 	else:
 		if coyote_timer.is_stopped():
 			apply_gravity(delta)
+			touch_ground = false
 		elif !jump_buffer_timer.is_stopped():
 			jump()
 		
-		if Input.is_action_just_pressed("jump") and double_jump > 0:
+		if Input.is_action_just_pressed("jump") and double_jump > 0 and !touch_ground:
 			jump()
 			double_jump -= 1
 
