@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://wp6e5vay6lpn"]
+[gd_scene load_steps=8 format=3 uid="uid://wp6e5vay6lpn"]
 
 [ext_resource type="Texture2D" uid="uid://c7uy32h0tcdil" path="res://assets/images/Gray.png" id="1_n1fre"]
 [ext_resource type="PackedScene" uid="uid://t543ml5p86j4" path="res://scene/Player.tscn" id="2_ttb6k"]
 [ext_resource type="Texture2D" uid="uid://ben1o0183prdk" path="res://assets/tileset/Mossy - TileSet.png" id="3_k6s4g"]
+[ext_resource type="PackedScene" uid="uid://bg3wbqie4p2n7" path="res://scene/enemy1.tscn" id="4_1lbl3"]
+[ext_resource type="PackedScene" uid="uid://5riugiewiwxo" path="res://scene/enemy2.tscn" id="5_i81b7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8rylr"]
 texture = ExtResource("3_k6s4g")
@@ -16,7 +18,7 @@ texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -170.667, 256, -170.667, 256, 256, -256, 256)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -170.667, 256, -170.667, 256, 256, -128, 256)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -24,7 +26,7 @@ texture_region_size = Vector2i(512, 512)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -170.667, 256, -170.667, 256, 256, -256, 256)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -170.667, 128, -170.667, 128, 256, -256, 256)
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
@@ -187,6 +189,7 @@ texture_region_size = Vector2i(512, 512)
 3:3/0 = 0
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-170.667, -128, 170.667, -128, 170.667, 128, -170.667, 128)
 3:4/0 = 0
 3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:4/0/physics_layer_0/angular_velocity = 0.0
@@ -627,4 +630,16 @@ position_smoothing_speed = 7.0
 scale = Vector2(0.5, 0.5)
 tile_set = SubResource("TileSet_x56ku")
 format = 2
-layer_0/tile_data = PackedInt32Array(196608, 1, 0, 196609, 65537, 0, 196610, 65537, 0, 196611, 65537, 0, 196612, 65537, 0, 196613, 65537, 0, 196614, 65537, 0, 196615, 65537, 0, 196616, 131073, 0, 65539, 1, 3, 65540, 65537, 3, 131079, 1, 3, 131080, 65537, 3, 131081, 131073, 3, 65541, 131073, 3)
+layer_0/tile_data = PackedInt32Array(196608, 1, 0, 196609, 65537, 0, 196610, 65537, 0, 196611, 65537, 0, 196612, 65537, 0, 196613, 65537, 0, 196614, 65537, 0, 196615, 65537, 0, 65539, 1, 3, 65540, 65537, 3, 131079, 1, 3, 131080, 65537, 3, 131081, 131073, 3, 65541, 131073, 3, 196616, 65537, 0, 196617, 65537, 0, 196618, 65537, 0, 196619, 65537, 0, 196620, 65537, 0, 196621, 65537, 0, 196622, 65537, 0, 196623, 131073, 0, 458769, 131073, 0, 458768, 65537, 0, 458767, 65537, 0, 458766, 65537, 0, 458765, 65537, 0, 458764, 65537, 0, 458763, 65537, 0, 458762, 65537, 0, 458761, 65537, 0, 458760, 65537, 0, 458759, 65537, 0, 458758, 65537, 0, 458757, 65537, 0, 458756, 65537, 0, 458755, 65537, 0, 720896, 1, 0, 720897, 65537, 0, 720898, 65537, 0, 720899, 65537, 0, 720900, 65537, 0, 720901, 65537, 0, 720902, 65537, 0, 720903, 65537, 0, 720904, 65537, 0, 720905, 65537, 0, 720906, 65537, 0, 720907, 65537, 0, 720908, 65537, 0, 720909, 65537, 0, 720910, 65537, 0, 720911, 65537, 0, 720912, 65537, 0, 589824, 196609, 3, 327697, 196609, 3, 720913, 131073, 0, 458754, 1, 0)
+
+[node name="enemy1" parent="." instance=ExtResource("4_1lbl3")]
+position = Vector2(1119, 202)
+
+[node name="enemy2" parent="." instance=ExtResource("4_1lbl3")]
+position = Vector2(3449, 659)
+
+[node name="enemy3" parent="." instance=ExtResource("4_1lbl3")]
+position = Vector2(2249, 427)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_i81b7")]
+position = Vector2(1027, 577)
