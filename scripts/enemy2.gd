@@ -6,6 +6,9 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox/CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
+var health_item = preload("res://scene/health_collectible.tscn")
+var health_drop_chance = 20
+
 @export var speed = 300
 @export var strength = 25
 @export var health = 100
@@ -67,6 +70,10 @@ func _on_animated_sprite_2d_animation_looped():
 		is_attacked = false
 		hitbox.disabled = false
 	if animated_sprite_2d.animation == 'die':
+		if randi_range(1, 100) <= health_drop_chance:
+			var health_drop = health_item.instantiate()
+			health_drop.position = position
+			get_parent().add_child(health_drop)
 		queue_free()
 
 

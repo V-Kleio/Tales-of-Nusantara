@@ -13,6 +13,8 @@ var FRICTION: int = 25 # The normal step for the speed to reach 0
 var ACCELERATION = 50 # The normal step to reach the speed
 var JUMP_VELOCITY: int = -1800 # The height of the jump
 var GRAVITY: int = 5000 # The acceleration of gravity
+
+@export var max_health: int = 100
 @export var health: int = 100
 @export var strength: int = 10
 @export var crit_chance: int = 100
@@ -21,11 +23,14 @@ var double_jump: int = 1 # Count the number of jump when the player jump
 var touch_ground: bool = true
 
 var is_attacking = false
-@export var side_attack_distance = 70
+var side_attack_distance = 70
 
 var is_attacked = false
 var is_death = false
 var is_iframe = false
+
+var has_all_key = false
+var count_key = 0
 
 func _physics_process(delta):
 	# Handle jump.

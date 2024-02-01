@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
+MetSys="res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 
 [display]
 
@@ -34,6 +34,7 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/amano-ldtk-importer/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+
 
 [input]
 
