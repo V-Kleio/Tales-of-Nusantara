@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dsgkkksswf40s"]
+[gd_scene load_steps=21 format=3 uid="uid://dsgkkksswf40s"]
 
 [ext_resource type="Texture2D" uid="uid://ba4j877gx4qaa" path="res://assets/enemy/Rock Head/Top Hit (42x42).png" id="1_ex3df"]
 [ext_resource type="Texture2D" uid="uid://bmjsmjqirnowy" path="res://assets/enemy/Rock Head/Left Hit (42x42).png" id="1_hvqnq"]
@@ -87,7 +87,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hit",
-"speed": 12.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -113,10 +113,14 @@ size = Vector2(157, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckcwd"]
 size = Vector2(129, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwjs0"]
+size = Vector2(20, 27)
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_uiaxs")
 health = 1000
+strength = 10
 enemy1_spawn_position = Vector2(2990, 1683)
 enemy2_spawn_position = Vector2(3043, 1166)
 enemy1_spawn_spread = 100
@@ -126,9 +130,8 @@ enemy2_spawn_spread = 10
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_368wq")
-animation = &"idle"
+animation = &"hit"
 autoplay = "idle"
-frame_progress = 0.377721
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t50et")
@@ -146,5 +149,20 @@ collision_mask = 2
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_ckcwd")
 
+[node name="GroundTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="LandingCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingCheck"]
+position = Vector2(1, 80.5)
+shape = SubResource("RectangleShape2D_cwjs0")
+
+[node name="SummonTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="LandingCheck" to="." method="_on_landing_check_body_entered"]
+[connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]

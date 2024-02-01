@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var hurtbox = $Hurtbox
 @onready var hitbox = $Hitbox/CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var detect_particle = $DetectParticle
 
 var health_item = preload("res://scene/health_collectible.tscn")
 var health_drop_chance = 20
@@ -50,6 +51,7 @@ func vision():
 		if player_tracker.get_collider() != player:
 			return
 		else:
+			detect_particle.emitting = true
 			chase()
 
 func chase():

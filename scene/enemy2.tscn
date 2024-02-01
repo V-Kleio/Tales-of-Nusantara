@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://5riugiewiwxo"]
+[gd_scene load_steps=20 format=3 uid="uid://5riugiewiwxo"]
 
 [ext_resource type="Script" path="res://scripts/enemy2.gd" id="1_bt4ul"]
 [ext_resource type="Texture2D" uid="uid://bk025ysdtkttf" path="res://assets/enemy/4 Vulture/Vulture_walk.png" id="1_eb2qs"]
 [ext_resource type="Texture2D" uid="uid://cnc1ordskylpu" path="res://assets/enemy/4 Vulture/Vulture_death.png" id="2_reu33"]
 [ext_resource type="Texture2D" uid="uid://cqlyrpxw2ce03" path="res://assets/enemy/4 Vulture/Vulture_hurt.png" id="3_m0vwq"]
+[ext_resource type="Texture2D" uid="uid://be4r5e64nygq" path="res://assets/images/Detected.png" id="5_fy23x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnwdw"]
 atlas = ExtResource("2_reu33")
@@ -99,6 +100,12 @@ size = Vector2(110.5, 81)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0lr2"]
 size = Vector2(71, 19)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w6t6q"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 script = ExtResource("1_bt4ul")
@@ -131,6 +138,15 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-18, 9)
 shape = SubResource("RectangleShape2D_w0lr2")
+
+[node name="DetectParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_w6t6q")
+texture = ExtResource("5_fy23x")
+lifetime = 0.4
+one_shot = true
+fixed_fps = 60
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

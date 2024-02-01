@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var wall_detector = $WallDetector
 @onready var hitbox = $hitbox/CollisionShape2D
+@onready var ground_time = $GroundTime
+@onready var summon_timer = $SummonTimer
 
 var key = preload("res://scene/key.tscn")
 var enemy1 = preload("res://scene/enemy1.tscn")
@@ -19,13 +21,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_facing_right = false
 var is_attacked = false
 var is_death = false
-var summon_ready = false
 
 @export var enemy1_spawn_position: Vector2
 @export var enemy2_spawn_position: Vector2
 @export var enemy1_spawn_spread: int
 @export var enemy2_spawn_spread: int
 
+func _ready():
+	summon_timer.start()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -52,16 +55,16 @@ func _physics_process(delta):
 			wall_detector.rotation_degrees = 90
 			speed = abs(speed) * -1
 	
+	if !ground_time.is_stopped():
+		speed = 0
+		jump = 0
+	
 	if is_on_floor():
 		velocity.y = jump
 	
 	velocity.x = speed
 
 	move_and_slide()
-	
-	if health % 300 < 10 and health != 0:
-		summon()
-		health -= 10
 	
 	if health <= 0:
 		is_death = true
@@ -103,14 +106,24 @@ func _on_hitbox_body_entered(body):
 		body.health -= strength
 
 func summon():
-	for i in range(randi_range(2, 6)):
+	for i in range(randi_range(1, 3)):
 		var enemy1_spawn = enemy1.instantiate()
 		enemy1_spawn.position = enemy1_spawn_position
 		enemy1_spawn.position.x = enemy1_spawn_position.x + (enemy1_spawn_spread * i)
 		get_parent().add_child(enemy1_spawn)
 	
-	for i in range(randi_range(1,3)):
+	for i in range(randi_range(1,2)):
 		var enemy2_spawn = enemy2.instantiate()
 		enemy2_spawn.position = enemy2_spawn_position
 		enemy2_spawn.position.x = enemy2_spawn_position.x + (enemy2_spawn_spread * i)
 		get_parent().add_child(enemy2_spawn)
+
+
+
+func _on_landing_check_body_entered(body):
+	ground_time.start()
+
+
+func _on_summon_timer_timeout():
+	summon()
+	summon_timer.start()

@@ -3,7 +3,8 @@ extends CharacterBody2D
 
 @onready var jump_buffer_timer = $JumpBufferTimer
 @onready var coyote_timer = $CoyoteTimer
-@onready var double_jump_particles = $GPUParticles2D
+@onready var double_jump_particles = $DoubleJumpParticle
+@onready var critical_particle = $CriticalParticle
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var slash_shape = $SideAttack/SideAttackHitbox
 @onready var iframe = $Iframe
@@ -87,8 +88,7 @@ func _physics_process(delta):
 	
 	if health <= 0:
 		is_death = true
-		if is_death:
-			animated_sprite_2d.animation = 'death'
+		death()
 
 func attack():
 	is_attacking = true
@@ -141,8 +141,6 @@ func _on_animated_sprite_2d_animation_looped():
 		is_attacking = false
 	elif animated_sprite_2d.animation == 'hit':
 		is_attacked = false
-	elif animated_sprite_2d.animation == 'death':
-		death()
 
 
 func _on_side_attack_body_entered(body):
@@ -150,5 +148,6 @@ func _on_side_attack_body_entered(body):
 		body.attacked()
 		if randi_range(1, 100) <= crit_chance:
 			body.health = body.health - (strength * 2)
+			critical_particle.emitting = true
 		else:
 			body.health -= strength
