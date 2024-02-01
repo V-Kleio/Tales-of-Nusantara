@@ -335,6 +335,9 @@ size = Vector2(48.515, 151)
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_gc03i")
+max_health = 10000000
+health = 10000000
+strength = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)

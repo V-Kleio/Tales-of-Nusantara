@@ -59,7 +59,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	if health % 300 == 0 and health != 0:
+	if health % 300 < 10 and health != 0:
 		summon()
 		health -= 10
 	
