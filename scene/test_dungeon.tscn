@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctf3voql1wv6o"]
+
+[ext_resource type="PackedScene" uid="uid://dc4xsokqcvj1l" path="res://scene/dungeon.tscn" id="1_tmwfo"]
+[ext_resource type="PackedScene" uid="uid://t543ml5p86j4" path="res://scene/Player.tscn" id="2_iyi3m"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="3_tgm04"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_8gcp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhmui"]
+size = Vector2(15088, 6460)
+
+[node name="Node" type="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7290, -1503)
+shape = SubResource("RectangleShape2D_lhmui")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -272.0
+offset_top = -5381.0
+offset_right = 14890.0
+offset_bottom = 1752.0
+color = Color(0.607843, 0.941176, 0.996078, 1)
+
+[node name="testing" parent="." instance=ExtResource("1_tmwfo")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(37, 892)
+scale = Vector2(0.5, 0.5)
+limit_left = -254
+limit_top = -4733
+limit_right = 14834
+limit_bottom = 1727
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("4_8gcp4")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_iyi3m")]
+position = Vector2(31, 875)
+scale = Vector2(0.5, 0.5)
+
+[node name="PhantomCamera2D" type="Node2D" parent="CharacterBody2D"]
+position = Vector2(12, 34)
+script = ExtResource("3_tgm04")
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/limit_node_target = NodePath("../../CollisionShape2D")
+limit/margin = Vector4i(0, 0, 0, 0)
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
