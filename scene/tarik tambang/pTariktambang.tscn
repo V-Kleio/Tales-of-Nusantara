@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://bh5dnpks4vb1"]
+
+[ext_resource type="Script" path="res://script/tarik tambang/pTariktambang.gd" id="1_fuqkk"]
+[ext_resource type="Texture2D" uid="uid://bra6032edcg5d" path="res://arts/TugOfWar/Tambang.png" id="2_sx4no"]
+[ext_resource type="Texture2D" uid="uid://di3ut1lng71mm" path="res://arts/TugOfWar/Win.png" id="3_1a0w3"]
+[ext_resource type="Texture2D" uid="uid://diyeggx5fj22n" path="res://arts/TugOfWar/AlmostLosing.png" id="4_1rm7l"]
+[ext_resource type="Texture2D" uid="uid://b8v88m6wkguyi" path="res://arts/RPS/RPS/lost.png" id="5_qpon7"]
+[ext_resource type="Texture2D" uid="uid://darv1qe2msmaj" path="res://arts/TugOfWar/Tutorial.png" id="6_ufaay"]
+[ext_resource type="Texture2D" uid="uid://baqtsjlk35135" path="res://arts/TugOfWar/Strength.png" id="7_6na5u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33hbi"]
+size = Vector2(64, 92.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk188"]
+size = Vector2(80, 100.25)
+
+[node name="playerTarikTambang" type="CharacterBody2D" groups=["player"]]
+position = Vector2(8, 0)
+script = ExtResource("1_fuqkk")
+
+[node name="p1_col" type="CollisionShape2D" parent="."]
+position = Vector2(600, 224)
+shape = SubResource("RectangleShape2D_33hbi")
+
+[node name="p2_col" type="CollisionShape2D" parent="."]
+position = Vector2(1312, 224)
+shape = SubResource("RectangleShape2D_33hbi")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(600, 224)
+shape = SubResource("RectangleShape2D_yk188")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1312, 224)
+shape = SubResource("RectangleShape2D_yk188")
+
+[node name="Tambang" type="Sprite2D" parent="."]
+position = Vector2(952, 344)
+scale = Vector2(0.958658, 1.20539)
+texture = ExtResource("2_sx4no")
+
+[node name="AlmostLosing" type="Sprite2D" parent="."]
+position = Vector2(1888, -136)
+texture = ExtResource("4_1rm7l")
+
+[node name="Lost" type="Sprite2D" parent="."]
+position = Vector2(1832, -128)
+rotation = -0.966912
+texture = ExtResource("5_qpon7")
+
+[node name="Win" type="Sprite2D" parent="."]
+position = Vector2(1064, -120)
+texture = ExtResource("3_1a0w3")
+
+[node name="Tutorial" type="Sprite2D" parent="."]
+position = Vector2(932, -152.5)
+scale = Vector2(1.0375, 1.22072)
+texture = ExtResource("6_ufaay")
+
+[node name="Strength" type="Sprite2D" parent="."]
+position = Vector2(408, 64)
+texture = ExtResource("7_6na5u")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,175 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdoticcdod58y"]
+
+[ext_resource type="Script" path="res://script/trivia/main_trivia.gd" id="1_3quwn"]
+[ext_resource type="Texture2D" uid="uid://brcnblph7ffdb" path="res://arts/Trivia/BackgroundTrivia.png" id="2_yysjm"]
+[ext_resource type="Texture2D" uid="uid://uyw6wxkc8fay" path="res://arts/Trivia/Question.png" id="3_kjw7w"]
+[ext_resource type="FontFile" uid="uid://csdwnfxn4mdp" path="res://arts/Trivia/another_typewriter/atwriter.ttf" id="4_rwif0"]
+[ext_resource type="Texture2D" uid="uid://cfrs8pj8yjdcm" path="res://arts/Trivia/TeacherQuestion.png" id="4_xydvb"]
+[ext_resource type="Texture2D" uid="uid://ci7wahiwxkuay" path="res://arts/Trivia/TeacherRight.png" id="5_yt05j"]
+[ext_resource type="Texture2D" uid="uid://dreuq4ec4aku2" path="res://arts/Trivia/TeacherWrong.png" id="6_t4rft"]
+[ext_resource type="Texture2D" uid="uid://cs5xyyyuqh6yk" path="res://arts/Trivia/ButtonDefault.png" id="7_equmy"]
+[ext_resource type="Texture2D" uid="uid://cwta6p0ouk122" path="res://arts/Trivia/ButtonHover.png" id="8_bttyi"]
+[ext_resource type="Texture2D" uid="uid://d2bqpus5aeynk" path="res://arts/Trivia/ButtonRight.png" id="9_ha4xw"]
+[ext_resource type="Texture2D" uid="uid://qqty4os18ilu" path="res://arts/Trivia/ButtonWrong.png" id="10_yh3i2"]
+[ext_resource type="Texture2D" uid="uid://u2gcquu2khr" path="res://arts/Trivia/Health.png" id="13_r8luk"]
+
+[node name="main_trivia" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3quwn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -25.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(9, 15)
+texture = ExtResource("2_yysjm")
+
+[node name="opsi_0" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 512.0
+offset_right = 1003.0
+offset_bottom = 675.0
+texture_normal = ExtResource("7_equmy")
+texture_hover = ExtResource("8_bttyi")
+
+[node name="opsi_1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 712.0
+offset_right = 1003.0
+offset_bottom = 875.0
+texture_normal = ExtResource("7_equmy")
+texture_hover = ExtResource("8_bttyi")
+
+[node name="opsi_2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 888.0
+offset_right = 1003.0
+offset_bottom = 1051.0
+texture_normal = ExtResource("7_equmy")
+texture_hover = ExtResource("8_bttyi")
+
+[node name="ButtonRight" type="Sprite2D" parent="."]
+position = Vector2(536, 592)
+texture = ExtResource("9_ha4xw")
+
+[node name="ButtonRight2" type="Sprite2D" parent="."]
+position = Vector2(536, 800)
+texture = ExtResource("9_ha4xw")
+
+[node name="ButtonRight3" type="Sprite2D" parent="."]
+position = Vector2(544, 968)
+texture = ExtResource("9_ha4xw")
+
+[node name="ButtonWrong" type="Sprite2D" parent="."]
+position = Vector2(536, 592)
+texture = ExtResource("10_yh3i2")
+
+[node name="ButtonWrong2" type="Sprite2D" parent="."]
+position = Vector2(536, 800)
+texture = ExtResource("10_yh3i2")
+
+[node name="ButtonWrong3" type="Sprite2D" parent="."]
+position = Vector2(536, 960)
+texture = ExtResource("10_yh3i2")
+
+[node name="Label_0" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 552.0
+offset_right = 944.0
+offset_bottom = 608.0
+theme_override_colors/font_color = Color(0.0627451, 0.101961, 0.156863, 1)
+theme_override_fonts/font = ExtResource("4_rwif0")
+theme_override_font_sizes/font_size = 60
+text = "asdadadadadaa"
+
+[node name="Label_1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 752.0
+offset_right = 928.0
+offset_bottom = 835.0
+theme_override_colors/font_color = Color(0.129412, 0.164706, 0.215686, 1)
+theme_override_fonts/font = ExtResource("4_rwif0")
+theme_override_font_sizes/font_size = 60
+
+[node name="Label_2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 920.0
+offset_right = 936.0
+offset_bottom = 1003.0
+theme_override_colors/font_color = Color(0.129412, 0.164706, 0.215686, 1)
+theme_override_fonts/font = ExtResource("4_rwif0")
+theme_override_font_sizes/font_size = 60
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -25.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(9, 15)
+texture = ExtResource("2_yysjm")
+
+[node name="Question" type="Sprite2D" parent="."]
+position = Vector2(624, 238.375)
+scale = Vector2(1.17548, 1.22638)
+texture = ExtResource("3_kjw7w")
+
+[node name="Soal" type="Label" parent="."]
+layout_mode = 2
+offset_left = 104.0
+offset_top = 48.0
+offset_right = 1160.0
+offset_bottom = 432.0
+theme_override_colors/font_color = Color(0.129412, 0.164706, 0.215686, 1)
+theme_override_fonts/font = ExtResource("4_rwif0")
+theme_override_font_sizes/font_size = 60
+text = "soal soal soal soal soal soal soal soal soal soal soal soal s soal soal soal soal soalsoal soal soal soal soal soal soal soal soal soal soal"
+autowrap_mode = 3
+
+[node name="TeacherQuestion" type="Sprite2D" parent="."]
+position = Vector2(1560, 608)
+texture = ExtResource("4_xydvb")
+
+[node name="TeacherRight" type="Sprite2D" parent="."]
+position = Vector2(1560, 608)
+texture = ExtResource("5_yt05j")
+
+[node name="TeacherWrong" type="Sprite2D" parent="."]
+position = Vector2(1560, 616)
+texture = ExtResource("6_t4rft")
+
+[node name="Health" type="Sprite2D" parent="."]
+position = Vector2(648, 752)
+scale = Vector2(1.07025, 1.08986)
+texture = ExtResource("13_r8luk")
+
+[connection signal="pressed" from="opsi_0" to="." method="_on_opsi_0_pressed"]
+[connection signal="pressed" from="opsi_1" to="." method="_on_opsi_1_pressed"]
+[connection signal="pressed" from="opsi_2" to="." method="_on_opsi_2_pressed"]

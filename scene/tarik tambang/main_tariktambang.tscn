@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl642q5ghqwp"]
+
+[ext_resource type="PackedScene" uid="uid://bh5dnpks4vb1" path="res://scenes/tarik tambang/pTariktambang.tscn" id="1_crck6"]
+[ext_resource type="Texture2D" uid="uid://y7k6048r3jr4" path="res://arts/TugOfWar/BackgroundTambang.png" id="1_dapy1"]
+[ext_resource type="PackedScene" uid="uid://cggkg3cjq4q48" path="res://scenes/tarik tambang/win_block.tscn" id="2_7prib"]
+[ext_resource type="Script" path="res://script/tarik tambang/win_block.gd" id="3_vsm70"]
+[ext_resource type="PackedScene" uid="uid://b5ewychrrplg3" path="res://scenes/tarik tambang/lose_block.tscn" id="4_4de4r"]
+[ext_resource type="Script" path="res://script/tarik tambang/almost_block.gd" id="5_enw6y"]
+
+[sub_resource type="GDScript" id="GDScript_f73iq"]
+script/source = "extends Node2D
+
+# =============== OY OY OY ===============
+# script banyak di pTarikTambang.tscn atau pTarikTambang.gd
+# =============== OY OY OY ===============
+
+func _on_Area2D_area_entered(area):
+	print('collided')
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhchu"]
+size = Vector2(236, 20)
+
+[node name="tarikTambang" type="Node2D" groups=["player"]]
+script = SubResource("GDScript_f73iq")
+
+[node name="BackgroundTambang" type="Sprite2D" parent="."]
+position = Vector2(944, 538)
+scale = Vector2(1.01667, 1.02593)
+texture = ExtResource("1_dapy1")
+
+[node name="playerTarikTambang" parent="." instance=ExtResource("1_crck6")]
+position = Vector2(40, 432)
+
+[node name="block8" parent="." instance=ExtResource("2_7prib")]
+position = Vector2(1920, 664)
+script = ExtResource("3_vsm70")
+
+[node name="lose_block" parent="." instance=ExtResource("4_4de4r")]
+position = Vector2(-16, 696)
+
+[node name="almost_block" type="Area2D" parent="." groups=["almost_block"]]
+script = ExtResource("5_enw6y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="almost_block" groups=["almost_block"]]
+position = Vector2(138, 704)
+shape = SubResource("RectangleShape2D_mhchu")
+
+[connection signal="input_event" from="playerTarikTambang" to="." method="_on_player_tarik_tambang_input_event"]
