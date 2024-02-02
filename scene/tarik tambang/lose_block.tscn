@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5ewychrrplg3"]
+
+[ext_resource type="Texture2D" uid="uid://c0y6aytodeesv" path="res://assets/TugOfWar/wooden.png" id="1_fxxgh"]
+[ext_resource type="Script" path="res://scripts/tarik tambang/lose_block.gd" id="1_tvvf5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mksa"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d72s"]
+
+[node name="lose_block" type="StaticBody2D"]
+script = ExtResource("1_tvvf5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_5mksa")
+
+[node name="Area2D" type="Area2D" parent="." groups=["lose_block"]]
+position = Vector2(8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1d72s")
+
+[node name="Wooden" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_fxxgh")

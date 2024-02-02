@@ -1,0 +1,144 @@
+[gd_scene load_steps=21 format=3 uid="uid://bs05uy8a6itdb"]
+
+[ext_resource type="Script" path="res://scripts/RPS/main_RFS.gd" id="1_wfbta"]
+[ext_resource type="Texture2D" uid="uid://cpw7jxqmlsbx" path="res://assets/RPS/RPS/bg.png" id="2_d8cgl"]
+[ext_resource type="Texture2D" uid="uid://c0irojirhkgxd" path="res://assets/RPS/RPS/pinky-button.png" id="3_r4pfe"]
+[ext_resource type="Texture2D" uid="uid://bs4tskq0lt2a5" path="res://assets/RPS/RPS/pinky-hover.png" id="4_mu0ql"]
+[ext_resource type="Texture2D" uid="uid://cx5aairipw7q2" path="res://assets/RPS/RPS/index-button.png" id="5_342rr"]
+[ext_resource type="Texture2D" uid="uid://b050osvdobkwy" path="res://assets/RPS/RPS/index-hover.png" id="6_6t81d"]
+[ext_resource type="Texture2D" uid="uid://dff1yug0v65hy" path="res://assets/RPS/RPS/thumb-button.png" id="7_igbkf"]
+[ext_resource type="Texture2D" uid="uid://dvqdtwo50c0fd" path="res://assets/RPS/RPS/thumb-hover.png" id="8_te2wf"]
+[ext_resource type="Texture2D" uid="uid://dn6qoc3k7o2j4" path="res://assets/RPS/RPS/luke-default.png" id="9_heiad"]
+[ext_resource type="Texture2D" uid="uid://bbpycixc512qc" path="res://assets/RPS/RPS/nisa-default.png" id="10_hvwm7"]
+[ext_resource type="Texture2D" uid="uid://ccc3nkwcfafga" path="res://assets/RPS/RPS/luke-index.png" id="11_rtm56"]
+[ext_resource type="Texture2D" uid="uid://cmuaadso7apqb" path="res://assets/RPS/RPS/luke-pinky.png" id="12_p2crp"]
+[ext_resource type="Texture2D" uid="uid://dlnv5pe15t7je" path="res://assets/RPS/RPS/nisa-index.png" id="13_ref1a"]
+[ext_resource type="Texture2D" uid="uid://dxn3kbtvsxwuw" path="res://assets/RPS/RPS/nisa-pinky.png" id="14_i7dvb"]
+[ext_resource type="Texture2D" uid="uid://cmyoy04ii52fl" path="res://assets/RPS/RPS/nisa-thumb.png" id="15_cbuf4"]
+[ext_resource type="Texture2D" uid="uid://phvw88oc61tk" path="res://assets/RPS/RPS/luke-thumb.png" id="16_ftng8"]
+[ext_resource type="Texture2D" uid="uid://cqh65mk7vhpv6" path="res://assets/RPS/RPS/won.png" id="17_7rhrd"]
+[ext_resource type="Texture2D" uid="uid://b8v88m6wkguyi" path="res://assets/RPS/RPS/lost.png" id="18_r7ahn"]
+[ext_resource type="Texture2D" uid="uid://bsyj0c5cvgh83" path="res://assets/RPS/RPS/critchance.png" id="19_d8wnv"]
+[ext_resource type="Texture2D" uid="uid://8recwvjit5oy" path="res://assets/RPS/RPS/seri.png" id="20_tled4"]
+
+[node name="main_RPS" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wfbta")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -32.0
+offset_right = 1960.0
+offset_bottom = 1144.0
+texture = ExtResource("2_d8cgl")
+
+[node name="pinky_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 744.0
+offset_right = 264.0
+offset_bottom = 936.0
+theme_override_font_sizes/font_size = 120
+
+[node name="Sprite2D" type="Sprite2D" parent="pinky_button"]
+position = Vector2(104, 88)
+texture = ExtResource("3_r4pfe")
+
+[node name="Pinky-hover" type="Sprite2D" parent="pinky_button"]
+position = Vector2(104.5, 98)
+scale = Vector2(1.06693, 1.01429)
+texture = ExtResource("4_mu0ql")
+
+[node name="index_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 728.0
+offset_right = 648.0
+offset_bottom = 957.0
+theme_override_font_sizes/font_size = 120
+
+[node name="Sprite2D" type="Sprite2D" parent="index_button"]
+position = Vector2(118.25, 115.5)
+scale = Vector2(1.05411, 1.02893)
+texture = ExtResource("5_342rr")
+
+[node name="Index-hover" type="Sprite2D" parent="index_button"]
+position = Vector2(112, 112)
+scale = Vector2(1.11044, 1.05172)
+texture = ExtResource("6_6t81d")
+
+[node name="thumb_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 744.0
+offset_right = 960.0
+offset_bottom = 936.0
+theme_override_font_sizes/font_size = 120
+
+[node name="Sprite2D" type="Sprite2D" parent="thumb_button"]
+position = Vector2(88, 104)
+texture = ExtResource("7_igbkf")
+
+[node name="Thumb-hover" type="Sprite2D" parent="thumb_button"]
+position = Vector2(88, 104)
+texture = ExtResource("8_te2wf")
+
+[node name="Luke-default" type="Sprite2D" parent="."]
+position = Vector2(1448, 816)
+texture = ExtResource("9_heiad")
+
+[node name="Nisa-default" type="Sprite2D" parent="."]
+position = Vector2(488, 344)
+texture = ExtResource("10_hvwm7")
+
+[node name="Luke-index" type="Sprite2D" parent="."]
+position = Vector2(1440, 696)
+texture = ExtResource("11_rtm56")
+
+[node name="Luke-pinky" type="Sprite2D" parent="."]
+position = Vector2(1384, 776)
+texture = ExtResource("12_p2crp")
+
+[node name="Nisa-index" type="Sprite2D" parent="."]
+position = Vector2(488, 480)
+texture = ExtResource("13_ref1a")
+
+[node name="Nisa-pinky" type="Sprite2D" parent="."]
+position = Vector2(544, 384)
+texture = ExtResource("14_i7dvb")
+
+[node name="Nisa-thumb" type="Sprite2D" parent="."]
+position = Vector2(448, 360)
+texture = ExtResource("15_cbuf4")
+
+[node name="Luke-thumb" type="Sprite2D" parent="."]
+position = Vector2(1512, 792)
+texture = ExtResource("16_ftng8")
+
+[node name="Won" type="Sprite2D" parent="."]
+position = Vector2(1728, 240)
+texture = ExtResource("17_7rhrd")
+
+[node name="Lost" type="Sprite2D" parent="."]
+position = Vector2(1752, 248)
+texture = ExtResource("18_r7ahn")
+flip_h = true
+
+[node name="Critchance" type="Sprite2D" parent="."]
+position = Vector2(936, 536)
+texture = ExtResource("19_d8wnv")
+
+[node name="Seri" type="Sprite2D" parent="."]
+position = Vector2(1736, 208)
+texture = ExtResource("20_tled4")
+
+[connection signal="mouse_entered" from="pinky_button" to="." method="_on_pinky_button_mouse_entered"]
+[connection signal="mouse_exited" from="pinky_button" to="." method="_on_pinky_button_mouse_exited"]
+[connection signal="pressed" from="pinky_button" to="." method="_on_pinky_button_pressed"]
+[connection signal="mouse_entered" from="index_button" to="." method="_on_index_button_mouse_entered"]
+[connection signal="mouse_exited" from="index_button" to="." method="_on_index_button_mouse_exited"]
+[connection signal="pressed" from="index_button" to="." method="_on_index_button_pressed"]
+[connection signal="mouse_entered" from="thumb_button" to="." method="_on_thumb_button_mouse_entered"]
+[connection signal="mouse_exited" from="thumb_button" to="." method="_on_thumb_button_mouse_exited"]
+[connection signal="pressed" from="thumb_button" to="." method="_on_thumb_button_pressed"]
