@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://t543ml5p86j4"]
+[gd_scene load_steps=31 format=3 uid="uid://t543ml5p86j4"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gc03i"]
 [ext_resource type="Texture2D" uid="uid://ct66gpftkswfc" path="res://assets/character/Overworld/LegendLukeIdleSprite.png" id="2_1u56e"]
@@ -167,6 +167,9 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.25
 scale_max = 0.25
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohwa2"]
+size = Vector2(70, 62.5)
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_gc03i")
@@ -174,7 +177,7 @@ strength = 100
 crit_chance = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -11)
+position = Vector2(-6, -10)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_lj8k8")
 animation = &"hit"
@@ -182,6 +185,7 @@ autoplay = "idle"
 frame_progress = 0.941303
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 5)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_uug20")
@@ -225,6 +229,13 @@ process_material = SubResource("ParticleProcessMaterial_3qc6p")
 texture = ExtResource("7_0xrjk")
 lifetime = 0.5
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 46.25)
+shape = SubResource("RectangleShape2D_ohwa2")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="SideAttack" to="." method="_on_side_attack_body_entered"]

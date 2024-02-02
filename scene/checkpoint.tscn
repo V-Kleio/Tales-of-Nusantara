@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://w2jugmcemyty"]
+
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_s4yxn"]
+[ext_resource type="Texture2D" uid="uid://bj6qrmjygvqv3" path="res://assets/checkpoint250x800.png" id="2_0f0p8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5v8o"]
+size = Vector2(130, 727)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tcnc"]
+atlas = ExtResource("2_0f0p8")
+region = Rect2(0, 0, 250, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60rnx"]
+atlas = ExtResource("2_0f0p8")
+region = Rect2(250, 0, 250, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31xmv"]
+atlas = ExtResource("2_0f0p8")
+region = Rect2(500, 0, 250, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw7v5"]
+atlas = ExtResource("2_0f0p8")
+region = Rect2(750, 0, 250, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40vaq"]
+atlas = ExtResource("2_0f0p8")
+region = Rect2(1000, 0, 250, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjebn"]
+atlas = ExtResource("2_0f0p8")
+region = Rect2(0, 0, 250, 800)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbw04"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tcnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60rnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31xmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw7v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40vaq")
+}],
+"loop": true,
+"name": &"Activate",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjebn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_s4yxn")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-12, -16.5)
+shape = SubResource("RectangleShape2D_h5v8o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(15, -7)
+sprite_frames = SubResource("SpriteFrames_vbw04")
+animation = &"Activate"
+frame_progress = 0.757267
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

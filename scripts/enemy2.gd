@@ -72,7 +72,7 @@ func _on_animated_sprite_2d_animation_looped():
 		is_attacked = false
 		hitbox.disabled = false
 	if animated_sprite_2d.animation == 'die':
-		if randi_range(1, 100) <= health_drop_chance:
+		if randi_range(1, 20) <= health_drop_chance:
 			var health_drop = health_item.instantiate()
 			health_drop.position = position
 			get_parent().add_child(health_drop)
