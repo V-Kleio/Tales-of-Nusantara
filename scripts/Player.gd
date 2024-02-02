@@ -1,5 +1,7 @@
 extends CharacterBody2D
+class_name Player
 
+signal healthChanged
 
 @onready var jump_buffer_timer = $JumpBufferTimer
 @onready var coyote_timer = $CoyoteTimer
@@ -32,6 +34,11 @@ var is_iframe = false
 
 var has_all_key = false
 var count_key = 0
+
+var cur_health = 100
+
+func _ready():
+	GameManager.player = self
 
 func _physics_process(delta):
 	# Handle jump.
@@ -66,6 +73,13 @@ func _physics_process(delta):
 			jump()
 			double_jump_particles.emitting = true
 			double_jump -= 1
+		
+	
+	if is_attacked:
+		healthChanged.emit()
+		cur_health = health
+	if health > cur_health:
+		healthChanged.emit()
 
 
 	var direction = Input.get_axis("left", "right")
@@ -101,9 +115,16 @@ func attacked():
 func death():
 	is_death = false
 	is_attacked = false
-	$".".position.x = 89
-	$".".position.y = 368
+	GameManager.respawn_player()
 	health = 100
+	healthChanged.emit()
+
+func death_by_spikes():
+	is_death = false
+	is_attacked = false
+	GameManager.respawn_player()
+	health -= 0.4 * max_health
+	healthChanged.emit()
 
 func jump() -> void:
 	velocity.y = JUMP_VELOCITY
