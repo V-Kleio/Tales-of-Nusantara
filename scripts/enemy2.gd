@@ -83,7 +83,6 @@ func _on_animated_sprite_2d_animation_looped():
 	if animated_sprite_2d.animation == 'hit':
 		is_attacked = false
 		hitbox.disabled = false
-		
 
 
 func _on_hitbox_body_entered(body):

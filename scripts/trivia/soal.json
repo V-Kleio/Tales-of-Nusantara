@@ -1,0 +1,184 @@
+[
+
+	{
+		"Soal": "Ibu kota Jawa Barat ? ",
+		"Opsi": ["Bandung","Jakarta","Surabaya"],
+		"Jawaban" : 0,
+	
+	},
+
+	{
+		"Soal": "Kapan Indonesia merdeka ? ",
+		"Opsi": ["3 Februari 2024","1 Januari 1948","17 Agustus 1945"],
+		"Jawaban" : 2,
+	
+	},
+
+	{
+		"Soal": "Angklung berasal dari ? ",
+		"Opsi": ["Medan","Bandung","Surabaya"],
+		"Jawaban" : 1,
+	
+	},
+
+	{
+		"Soal": "Rumah adar dari Sumatera Barat ? ",
+		"Opsi": ["Rumah Gadang","Hanoi","Iglo"],
+		"Jawaban" : 0,
+	
+	},
+
+	{
+		"Soal": "Siapakah yang mendapat julukan Bapak Proklamator ? ",
+		"Opsi": ["Soekarno","Naruto","Erdogan"],
+		"Jawaban" : 0,
+	
+	},
+
+	{
+		"Soal": "Dasar Negara Indonesia ? ",
+		"Opsi": ["Pancasila","Kerajaan","Chill"],
+		"Jawaban" : 0,
+	
+	},
+
+	{
+		"Soal": "Siapa presiden yang menjabat selama 31 tahun ? ",
+		"Opsi": ["Alfian","Jokowi","Soeharto"],
+		"Jawaban" : 2,
+	
+	},
+
+	{
+		"Soal": "Tari yang berasal dari Aceh ? ",
+		"Opsi": ["Balet","Saman","Jaipong"],
+		"Jawaban" : 1,
+	
+	},
+
+	{
+		"Soal": "Bunyi hukum ke-2 Newton ? ",
+		"Opsi": ["F = 0","F = ma","F = F"],
+		"Jawaban" : 1,
+	
+	},
+	
+	{
+		"Soal": "Angklung berasal dari ? ",
+		"Opsi": ["Medan","Bandung","Surabaya"],
+		"Jawaban" : 1,
+	
+	},
+	
+	{
+		"Soal": "Bela diri yang berasal dari Indoenesia ? ",
+		"Opsi": ["Muay Thai","Karate","Silat"],
+		"Jawaban" : 2,
+	
+	},
+	
+	{
+		"Soal": "Candi borobudur berada di ? ",
+		"Opsi": ["Magelang","Depok","Bali"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "lagu Hindia ?",
+		"Opsi": ["Rumah ke Rumah","Balonku","Aduh"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "Outfit skena ? ",
+		"Opsi": ["Sepatu New Balance","Jas","Jubah"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "Kadal terbesar di dunia ? ",
+		"Opsi": ["Komodo","Buaya","Ular"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "25 X 5 ? ",
+		"Opsi": ["Roti Bakar","125","Surabaya"],
+		"Jawaban" : 1,
+	
+	},
+	
+	
+	{
+		"Soal": "Event fashion show yang pernah viral di Indonesia? ",
+		"Opsi": ["Citayam Fashion Week","New York Fashion Week","Met Gala"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "Tempat curhat kebanyakan anak muda ? ",
+		"Opsi": ["X/twitter","Buku Diari","Tembok"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "Brand Lokal Indonesia?",
+		"Opsi": ["Adidas","Nike","Erigo"],
+		"Jawaban" : 2,
+	
+	},
+	
+	{
+		"Soal": "saya bingung buat soal, pilih salah satu aja  ? ",
+		"Opsi": ["A","B","C"],
+		"Jawaban" : 2,
+	
+	},
+	
+	{
+		"Soal": "Cara terbaik makan bubur ? ",
+		"Opsi": ["Diaduk","Dimakan","Diedit"],
+		"Jawaban" : 1,
+	
+	},
+	
+	{
+		"Soal": "Barang yang paling dijaga anak sekolah ? ",
+		"Opsi": ["Alat Tulis","Buku","Tupperware"],
+		"Jawaban" : 2,
+	
+	},
+	
+	{
+		"Soal": "Cara terbaik menyelesaikan masalah ? ",
+		"Opsi": ["Diskusi","Tinju","Membuat Masalah Lain"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "Klub bola terbaik ? ",
+		"Opsi": ["MU","Chelsea","Real Madrid"],
+		"Jawaban" : 0,
+	
+	},
+	
+	{
+		"Soal": "Ciri coffee shop di Indonesia ? ",
+		"Opsi": ["Batu Kerikil","Kursi Bakso","Lampu Merah"],
+		"Jawaban" : 0,
+	
+	},
+
+
+
+
+
+
+]
