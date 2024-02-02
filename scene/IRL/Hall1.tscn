@@ -1,0 +1,190 @@
+[gd_scene load_steps=19 format=3 uid="uid://d4kr1g402oqyq"]
+
+[ext_resource type="Texture2D" uid="uid://dmnya5t2ghi8u" path="res://assets/asset background/Hallway1.png" id="1_c47nx"]
+[ext_resource type="Texture2D" uid="uid://4c7xipabqw51" path="res://assets/asset background/Hallway4.png" id="2_dyu76"]
+[ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="2_yjkmk"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_tv083"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="4_7egk8"]
+[ext_resource type="Texture2D" uid="uid://qxcp1uchord7" path="res://assets/character/IRL/Raka.png" id="7_ecvrs"]
+[ext_resource type="Script" path="res://scripts/rightarea.gd" id="8_6s1w2"]
+[ext_resource type="Texture2D" uid="uid://opfuefgvhi7l" path="res://assets/character/IRL/Ayu.png" id="8_cktkf"]
+[ext_resource type="Texture2D" uid="uid://bdgvwqyv02baw" path="res://assets/asset background/arrow-hover-left.png" id="9_el2f4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhdn2"]
+size = Vector2(256, 1128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odysx"]
+size = Vector2(198, 1128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uiowv"]
+size = Vector2(4050, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omtx0"]
+size = Vector2(154, 512)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_emtcs"]
+load_path = "res://.godot/imported/Hallway2.png-33dcb1a6aab9b7d62c514def56672a75.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p48gx"]
+size = Vector2(448, 381)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxvj1"]
+size = Vector2(142, 1007)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymidp"]
+size = Vector2(179, 1005)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00krp"]
+size = Vector2(552, 959)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="hall1limit" type="Node2D" parent="."]
+position = Vector2(0, -464)
+
+[node name="Wall" type="StaticBody2D" parent="hall1limit"]
+position = Vector2(-1944, 464)
+
+[node name="right" type="CollisionShape2D" parent="hall1limit/Wall"]
+position = Vector2(4184, -537)
+shape = SubResource("RectangleShape2D_hhdn2")
+
+[node name="left" type="CollisionShape2D" parent="hall1limit/Wall"]
+position = Vector2(-248, -448)
+shape = SubResource("RectangleShape2D_odysx")
+
+[node name="Floor" type="StaticBody2D" parent="hall1limit"]
+position = Vector2(0, 464)
+
+[node name="Bot" type="CollisionShape2D" parent="hall1limit/Floor"]
+position = Vector2(-1, 64)
+shape = SubResource("RectangleShape2D_uiowv")
+
+[node name="bg" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2096.0
+offset_top = -1016.0
+offset_right = 2114.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_c47nx")
+
+[node name="TextureRect" type="TextureRect" parent="bg"]
+layout_mode = 0
+offset_right = 4210.0
+offset_bottom = 1184.0
+texture = ExtResource("2_dyu76")
+
+[node name="Nisa" type="Area2D" parent="."]
+visible = false
+position = Vector2(-2096, -1016)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nisa"]
+position = Vector2(2465, 632.592)
+scale = Vector2(1.86842, 1.86842)
+texture = ExtResource("8_cktkf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nisa"]
+position = Vector2(2456, 632)
+shape = SubResource("RectangleShape2D_omtx0")
+
+[node name="CameraFollow" type="Camera2D" parent="."]
+position = Vector2(-1, -421)
+zoom = Vector2(0.92, 0.92)
+limit_left = -2016
+limit_top = -1008
+limit_right = 2016
+limit_bottom = 168
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="CameraFollow"]
+script = ExtResource("3_tv083")
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(0, -537)
+
+[node name="PlayerPhantomCamera2D" type="Node2D" parent="Player"]
+position = Vector2(-1, 116)
+script = ExtResource("4_7egk8")
+priority_override = false
+priority = 0
+zoom = Vector2(0.92, 0.92)
+follow_mode = 1
+follow_target = NodePath("../CharacterBody2D")
+follow_parameters/damping = true
+follow_parameters/damping_value = 50.0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -2016
+limit/top = -1008
+limit/right = 2016
+limit/bottom = 168
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="CharacterBody2D" parent="Player" groups=["Player"] instance=ExtResource("2_yjkmk")]
+position = Vector2(-1, 97)
+
+[node name="fg" type="TextureRect" parent="."]
+offset_left = -2096.0
+offset_top = -1016.0
+offset_right = 2114.0
+offset_bottom = 168.0
+texture = SubResource("CompressedTexture2D_emtcs")
+
+[node name="Raka" type="Area2D" parent="."]
+position = Vector2(-2096, -1016)
+
+[node name="Sprite2D" type="Sprite2D" parent="Raka"]
+position = Vector2(3387.73, 735.25)
+scale = Vector2(1.51186, 1.51186)
+texture = ExtResource("7_ecvrs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raka"]
+position = Vector2(3384, 734.5)
+shape = SubResource("RectangleShape2D_p48gx")
+
+[node name="teleport hall1" type="Node" parent="."]
+
+[node name="rightarea" type="Area2D" parent="teleport hall1"]
+visible = false
+script = ExtResource("8_6s1w2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport hall1/rightarea"]
+position = Vector2(1944, -504.5)
+shape = SubResource("RectangleShape2D_lxvj1")
+debug_color = Color(0.894118, 0, 0.780392, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="teleport hall1/rightarea"]
+position = Vector2(-1936, -656)
+texture = ExtResource("9_el2f4")
+
+[node name="leftarea" type="Area2D" parent="teleport hall1"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport hall1/leftarea"]
+position = Vector2(-1929.5, -505.5)
+shape = SubResource("RectangleShape2D_ymidp")
+debug_color = Color(0.866667, 0, 0.854902, 0.419608)
+
+[node name="library" type="Area2D" parent="teleport hall1"]
+visible = false
+position = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport hall1/library"]
+position = Vector2(0, -488.5)
+shape = SubResource("RectangleShape2D_00krp")
+debug_color = Color(0.890196, 0, 0.788235, 0.419608)
+
+[connection signal="body_entered" from="teleport hall1/rightarea" to="Player/CharacterBody2D" method="_on_rightarea_body_entered"]
+[connection signal="body_entered" from="teleport hall1/leftarea" to="Player/CharacterBody2D" method="_on_leftarea_body_entered"]
+[connection signal="body_entered" from="teleport hall1/library" to="Player/CharacterBody2D" method="_on_library_body_entered"]

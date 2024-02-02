@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsllc0gb3k44a"]
+
+[ext_resource type="Texture2D" uid="uid://dtj5ewqop1bhp" path="res://assets/bg/putih.png" id="1_8x2q3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 3812.0
+offset_bottom = 1072.0
+texture = ExtResource("1_8x2q3")
