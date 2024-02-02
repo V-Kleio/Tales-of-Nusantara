@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 @onready var player_tracker = $PlayerTrackerPivot/PlayerTracker
 @onready var player_tracker_pivot = $PlayerTrackerPivot
-@onready var hurtbox = $Hurtbox
 @onready var hitbox = $Hitbox/CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var detect_particle = $DetectParticle
+@onready var spawn_particle = $SpawnParticle
+@onready var death_particle = $DeathParticle
 
 var health_item = preload("res://scene/health_collectible.tscn")
 var health_drop_chance = 20
@@ -18,11 +19,22 @@ var player = null
 var player_position: Vector2
 var is_attacked = false
 var is_death = false
+var is_event = false
 
 func _ready():
 	player = get_tree().get_first_node_in_group('player')
+	is_event = true
+	animated_sprite_2d.visible = false
+	spawn_particle.emitting = true
+	
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	if is_event:
+		return
+	
+	if is_death:
+		return
+	
 	track_player()
 	vision()
 	
@@ -64,22 +76,30 @@ func attacked():
 
 func die():
 	hitbox.disabled = true
-	animated_sprite_2d.animation = 'die'
+	death_particle.emitting = true
 
 
 func _on_animated_sprite_2d_animation_looped():
 	if animated_sprite_2d.animation == 'hit':
 		is_attacked = false
 		hitbox.disabled = false
-	if animated_sprite_2d.animation == 'die':
-		if randi_range(1, 100) <= health_drop_chance:
-			var health_drop = health_item.instantiate()
-			health_drop.position = position
-			get_parent().add_child(health_drop)
-		queue_free()
+		
 
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("player"):
 		body.attacked()
 		body.health -= strength
+
+
+func _on_spawn_particle_finished():
+	animated_sprite_2d.visible = true
+	is_event = false
+
+
+func _on_death_particle_finished():
+	if randi_range(1, 100) <= health_drop_chance:
+		var health_drop = health_item.instantiate()
+		health_drop.position = position
+		get_parent().add_child(health_drop)
+	queue_free()

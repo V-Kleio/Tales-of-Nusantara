@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var hitbox = $hitbox/CollisionShape2D
 @onready var ground_time = $GroundTime
 @onready var summon_timer = $SummonTimer
+@onready var death_particle = $DeathParticle
 
 var key = preload("res://scene/key.tscn")
 var enemy1 = preload("res://scene/enemy1.tscn")
@@ -18,7 +19,7 @@ var speed = normal_speed
 var jump = normal_jump
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var is_facing_right = false
+var is_facing_right = true
 var is_attacked = false
 var is_death = false
 
@@ -31,6 +32,10 @@ func _ready():
 	summon_timer.start()
 
 func _physics_process(delta):
+	
+	if is_death:
+		return
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -87,17 +92,13 @@ func attacked():
 
 func die():
 	hitbox.disabled = true
-	animated_sprite_2d.animation = 'death'
+	death_particle.emitting = true
 
 func _on_animated_sprite_2d_animation_looped():
 	if animated_sprite_2d.animation == 'hit':
 		is_attacked = false
 		hitbox.disabled = false
-	if animated_sprite_2d.animation == 'death':
-		var key_drop = key.instantiate()
-		key_drop.position = position
-		get_parent().add_child(key_drop)
-		queue_free()
+		
 
 
 func _on_hitbox_body_entered(body):
@@ -127,3 +128,10 @@ func _on_landing_check_body_entered(body):
 func _on_summon_timer_timeout():
 	summon()
 	summon_timer.start()
+
+
+func _on_death_particle_finished():
+	var key_drop = key.instantiate()
+	key_drop.position = position
+	get_parent().add_child(key_drop)
+	queue_free()

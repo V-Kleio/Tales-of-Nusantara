@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var slash_shape = $SideAttack/SideAttackHitbox
 @onready var iframe = $Iframe
+@onready var death_particle = $DeathParticle
 
 var MAX_SPEED: int = 600 # The max speed of the character
 var FRICTION: int = 25 # The normal step for the speed to reach 0

@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dsgkkksswf40s"]
+[gd_scene load_steps=17 format=3 uid="uid://dsgkkksswf40s"]
 
 [ext_resource type="Texture2D" uid="uid://ba4j877gx4qaa" path="res://assets/enemy/Rock Head/Top Hit (42x42).png" id="1_ex3df"]
-[ext_resource type="Texture2D" uid="uid://bmjsmjqirnowy" path="res://assets/enemy/Rock Head/Left Hit (42x42).png" id="1_hvqnq"]
-[ext_resource type="Texture2D" uid="uid://q518un1ih330" path="res://assets/enemy/Rock Head/Blink (42x42).png" id="1_snrvw"]
 [ext_resource type="Script" path="res://scripts/boss1.gd" id="1_uiaxs"]
+[ext_resource type="Texture2D" uid="uid://cgbhi66xgldna" path="res://assets/enemy/BatuMarahKenaHit1100x700.png" id="3_xi4wp"]
+[ext_resource type="Texture2D" uid="uid://bejdfhfcn62um" path="res://assets/enemy/BatuMarah.png" id="4_64ejl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7w8m"]
 atlas = ExtResource("1_ex3df")
@@ -21,37 +21,17 @@ region = Rect2(0, 0, 42, 42)
 atlas = ExtResource("1_ex3df")
 region = Rect2(42, 0, 42, 42)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekftd"]
-atlas = ExtResource("1_hvqnq")
-region = Rect2(0, 0, 42, 42)
+[sub_resource type="AtlasTexture" id="AtlasTexture_orsno"]
+atlas = ExtResource("3_xi4wp")
+region = Rect2(0, 0, 1100, 700)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_melk4"]
-atlas = ExtResource("1_hvqnq")
-region = Rect2(42, 0, 42, 42)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d6gx"]
+atlas = ExtResource("3_xi4wp")
+region = Rect2(1100, 0, 1100, 700)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2s6qh"]
-atlas = ExtResource("1_hvqnq")
-region = Rect2(84, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xvupn"]
-atlas = ExtResource("1_hvqnq")
-region = Rect2(126, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcs3q"]
-atlas = ExtResource("1_snrvw")
-region = Rect2(0, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_chb1r"]
-atlas = ExtResource("1_snrvw")
-region = Rect2(42, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_og5l2"]
-atlas = ExtResource("1_snrvw")
-region = Rect2(84, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7bmg"]
-atlas = ExtResource("1_snrvw")
-region = Rect2(126, 0, 42, 42)
+[sub_resource type="AtlasTexture" id="AtlasTexture_81lxa"]
+atlas = ExtResource("4_64ejl")
+region = Rect2(0, 0, 1147, 689)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_368wq"]
 animations = [{
@@ -74,16 +54,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ekftd")
+"texture": SubResource("AtlasTexture_orsno")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_melk4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2s6qh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xvupn")
+"texture": SubResource("AtlasTexture_3d6gx")
 }],
 "loop": true,
 "name": &"hit",
@@ -91,30 +65,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bcs3q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_chb1r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_og5l2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j7bmg")
+"texture": SubResource("AtlasTexture_81lxa")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 4.0
+"speed": 1.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t50et"]
-size = Vector2(157, 160)
+size = Vector2(271, 146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckcwd"]
-size = Vector2(129, 128)
+size = Vector2(210, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwjs0"]
 size = Vector2(20, 27)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4suc8"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+damping_min = 20.0
+damping_max = 20.0
+scale_min = 15.0
+scale_max = 15.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -128,25 +106,27 @@ enemy2_spawn_spread = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_368wq")
-animation = &"hit"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.406916
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_t50et")
 
 [node name="WallDetector" type="RayCast2D" parent="."]
 rotation = 1.5708
 scale = Vector2(5, 5)
-target_position = Vector2(0, 25)
+target_position = Vector2(0, 35)
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0.5, -1)
+position = Vector2(-1, 10)
 shape = SubResource("RectangleShape2D_ckcwd")
 
 [node name="GroundTime" type="Timer" parent="."]
@@ -155,14 +135,24 @@ one_shot = true
 [node name="LandingCheck" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandingCheck"]
-position = Vector2(1, 80.5)
+position = Vector2(1, 75)
 shape = SubResource("RectangleShape2D_cwjs0")
 
 [node name="SummonTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
 
+[node name="DeathParticle" type="GPUParticles2D" parent="."]
+self_modulate = Color(0.562045, 0.0191032, 0.0106201, 1)
+position = Vector2(0, 81)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_4suc8")
+lifetime = 2.0
+one_shot = true
+
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="LandingCheck" to="." method="_on_landing_check_body_entered"]
 [connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]
+[connection signal="finished" from="DeathParticle" to="." method="_on_death_particle_finished"]
