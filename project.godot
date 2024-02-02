@@ -15,7 +15,7 @@ metroidvania_system/settings_file="res://MetSysSettings.tres"
 [application]
 
 config/name="GIMJAM2024"
-run/main_scene="res://scene/Playground.tscn"
+run/main_scene="res://scene/dungeon.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 

@@ -13,7 +13,7 @@ var health_drop_chance = 20
 
 @export var speed = 300
 @export var strength = 25
-@export var health = 100
+@export var health = 125
 
 var player = null
 var player_position: Vector2

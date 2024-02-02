@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://w2jugmcemyty"]
+[gd_scene load_steps=11 format=3 uid="uid://bvmgo7qwx1mw7"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_s4yxn"]
 [ext_resource type="Texture2D" uid="uid://bj6qrmjygvqv3" path="res://assets/checkpoint250x800.png" id="2_0f0p8"]
@@ -65,6 +65,8 @@ animations = [{
 script = ExtResource("1_s4yxn")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -77,4 +79,4 @@ sprite_frames = SubResource("SpriteFrames_vbw04")
 animation = &"Activate"
 frame_progress = 0.757267
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -11,8 +11,8 @@ extends CharacterBody2D
 var health_item = preload("res://scene/health_collectible.tscn")
 var health_drop_chance = 20
 
-@export var health: int = 20
-@export var strength: int = 50
+@export var health: int = 75
+@export var strength: int = 20
 @export var normal_speed = -100
 
 var speed = normal_speed

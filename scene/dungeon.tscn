@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cfwp568a685lc"]
 
 [ext_resource type="TileSet" uid="uid://c4eok1rsabwsw" path="res://ldtk/testing/tilesets/testing-tileset-64x64.res" id="1_8l2q7"]
-[ext_resource type="PackedScene" uid="uid://cabd2o2tfet7j" path="res://scene/spikes.tscn" id="1_22eh7"]
+[ext_resource type="PackedScene" uid="uid://bn88qvcyxvxnj" path="res://scene/spikes.tscn" id="1_22eh7"]
 [ext_resource type="PackedScene" uid="uid://t543ml5p86j4" path="res://scene/Player.tscn" id="2_sjmoo"]
 [ext_resource type="PackedScene" uid="uid://bg3wbqie4p2n7" path="res://scene/enemy1.tscn" id="3_limpk"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_ydycr"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://77k6t1e5ymbk" path="res://assets/HealthBar400x100 over.png" id="6_i5e0a"]
 [ext_resource type="PackedScene" uid="uid://dsgkkksswf40s" path="res://scene/boss1.tscn" id="7_57ej2"]
 [ext_resource type="Script" path="res://scripts/TextureHPBar.gd" id="7_tsvix"]
-[ext_resource type="PackedScene" uid="uid://w2jugmcemyty" path="res://scene/checkpoint.tscn" id="8_5nare"]
+[ext_resource type="PackedScene" uid="uid://bvmgo7qwx1mw7" path="res://scene/checkpoint.tscn" id="8_5nare"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys07n"]
 size = Vector2(15083, 6438)
@@ -57569,6 +57569,7 @@ layer_0/tile_data = PackedInt32Array(0, 20, 24, 1, 20, 22, 2, 20, 22, 3, 20, 22,
 
 [node name="player" parent="." instance=ExtResource("2_sjmoo")]
 position = Vector2(34, 873)
+strength = 10
 
 [node name="PhantomCamera2D2" type="Node2D" parent="player"]
 position = Vector2(657, 0)
