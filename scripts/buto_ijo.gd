@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var hurtbox = $Hurtbox
 @onready var attack = $Attack
 @onready var death_particle = $DeathParticle
+@onready var attack_sound = $AttackSound
+@onready var death_sound = $DeathSound
 
 
 var max_speed = 100
@@ -41,6 +43,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if health <= 0:
+		death_sound.play()
 		death_particle.emitting = true
 		is_death = true
 
@@ -95,6 +98,7 @@ func _on_animated_sprite_2d_animation_looped():
 	if animated_sprite_2d.animation == 'attack':
 		hitbox.disabled = true
 		down_time_timer.start()
+		attack_sound.play()
 		animated_sprite_2d.animation = 'downtime'
 
 

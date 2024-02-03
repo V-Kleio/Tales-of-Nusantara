@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b63lhhk4oe3jr"]
+[gd_scene load_steps=31 format=3 uid="uid://b63lhhk4oe3jr"]
 
 [ext_resource type="Script" path="res://scripts/buto_ijo.gd" id="1_f1gkq"]
 [ext_resource type="Texture2D" uid="uid://xaqjqav1m80l" path="res://assets/enemy/ButoIjoGotHitSprite1000x1200.png" id="1_lavh3"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://der3sdlrll58i" path="res://assets/enemy/ButoIjoAttackSprite2000x1300.png" id="3_88nhl"]
 [ext_resource type="Texture2D" uid="uid://wyxlkaitt2yb" path="res://assets/images/AttackCue.png" id="6_pvdhy"]
 [ext_resource type="Texture2D" uid="uid://dhg3tcedt0n8x" path="res://assets/images/Dust Particle.png" id="7_a2y23"]
+[ext_resource type="AudioStream" uid="uid://ckil75r8k0dbk" path="res://assets/audio/sfx/55_Encounter_02.wav" id="8_uhsis"]
+[ext_resource type="AudioStream" uid="uid://c3qlq2v8ve4qu" path="res://assets/audio/sfx/45_Charge_05.wav" id="9_v1s8c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_278v6"]
 atlas = ExtResource("1_nojxa")
@@ -229,6 +231,14 @@ process_material = SubResource("ParticleProcessMaterial_3xwrw")
 texture = ExtResource("7_a2y23")
 lifetime = 3.0
 one_shot = true
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_uhsis")
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_v1s8c")
+bus = &"SFX"
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
