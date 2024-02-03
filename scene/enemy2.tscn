@@ -81,7 +81,7 @@ scale = Vector2(0.17, 0.17)
 sprite_frames = SubResource("SpriteFrames_pwefb")
 animation = &"fly"
 autoplay = "fly"
-frame_progress = 0.632678
+frame_progress = 0.58934
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

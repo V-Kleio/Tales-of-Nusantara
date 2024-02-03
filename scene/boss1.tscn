@@ -1,25 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsgkkksswf40s"]
+[gd_scene load_steps=14 format=3 uid="uid://dsgkkksswf40s"]
 
-[ext_resource type="Texture2D" uid="uid://ba4j877gx4qaa" path="res://assets/enemy/Rock Head/Top Hit (42x42).png" id="1_ex3df"]
 [ext_resource type="Script" path="res://scripts/boss1.gd" id="1_uiaxs"]
+[ext_resource type="Texture2D" uid="uid://dsjc1hvn0cehk" path="res://assets/enemy/BatuMenangis.png" id="2_dj5y2"]
 [ext_resource type="Texture2D" uid="uid://cgbhi66xgldna" path="res://assets/enemy/BatuMarahKenaHit1100x700.png" id="3_xi4wp"]
 [ext_resource type="Texture2D" uid="uid://bejdfhfcn62um" path="res://assets/enemy/BatuMarah.png" id="4_64ejl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q7w8m"]
-atlas = ExtResource("1_ex3df")
-region = Rect2(126, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrvr7"]
-atlas = ExtResource("1_ex3df")
-region = Rect2(84, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1s63a"]
-atlas = ExtResource("1_ex3df")
-region = Rect2(0, 0, 42, 42)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epfc8"]
-atlas = ExtResource("1_ex3df")
-region = Rect2(42, 0, 42, 42)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew4jo"]
+atlas = ExtResource("2_dj5y2")
+region = Rect2(0, 0, 1147, 689)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_orsno"]
 atlas = ExtResource("3_xi4wp")
@@ -37,20 +25,11 @@ region = Rect2(0, 0, 1147, 689)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q7w8m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xrvr7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1s63a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epfc8")
+"texture": SubResource("AtlasTexture_ew4jo")
 }],
 "loop": true,
 "name": &"death",
-"speed": 4.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -91,8 +70,8 @@ initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 damping_min = 20.0
 damping_max = 20.0
-scale_min = 15.0
-scale_max = 15.0
+scale_min = 0.1
+scale_max = 0.1
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -108,9 +87,9 @@ enemy2_spawn_spread = 10
 texture_filter = 1
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_368wq")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.85723
+frame_progress = 0.936703
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, 0)
@@ -146,7 +125,7 @@ one_shot = true
 self_modulate = Color(0.562045, 0.0191032, 0.0106201, 1)
 position = Vector2(0, 81)
 emitting = false
-amount = 64
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_4suc8")
 lifetime = 2.0
 one_shot = true

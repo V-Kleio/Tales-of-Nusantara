@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t6h6nyqk3h8h"
-path="res://.godot/imported/ButoIjoAttackSprite1500x1300.png-15d6ae89b2fd8e36e7f82a7b569f331e.ctex"
+uid="uid://4c7xipabqw51"
+path="res://.godot/imported/Hallway4.png-45c1c78ab3f05f17ed9a197f52c63d85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/ButoIjoAttackSprite1500x1300.png"
-dest_files=["res://.godot/imported/ButoIjoAttackSprite1500x1300.png-15d6ae89b2fd8e36e7f82a7b569f331e.ctex"]
+source_file="res://assets/bg/Hallway4.png"
+dest_files=["res://.godot/imported/Hallway4.png-45c1c78ab3f05f17ed9a197f52c63d85.ctex"]
 
 [params]
 

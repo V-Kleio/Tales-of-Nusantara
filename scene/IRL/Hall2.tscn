@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=3 uid="uid://oo8ecv4liyfc"]
+
+[ext_resource type="Texture2D" uid="uid://d0fpxh44ln0j6" path="res://assets/character/IRL/Nisa.png" id="1_njs7v"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hhn2e"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="3_lso0y"]
+[ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="4_uooro"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ojgt"]
+load_path = "res://.godot/imported/Hallway3.png-456ba8d4111a5d3291cd0c0c333c4dd9.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wflx4"]
+size = Vector2(165, 512)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oddpd"]
+load_path = "res://.godot/imported/Hallway4.png-45c1c78ab3f05f17ed9a197f52c63d85.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxr8s"]
+size = Vector2(208, 1188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usid7"]
+size = Vector2(203, 1180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iky86"]
+size = Vector2(4200, 138)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="bg" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2105.0
+offset_top = -1184.0
+offset_right = 2105.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("CompressedTexture2D_4ojgt")
+
+[node name="Nisa" type="Area2D" parent="."]
+position = Vector2(-2096, -1016)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nisa"]
+position = Vector2(3922.71, 471.535)
+scale = Vector2(1.81421, 1.81421)
+texture = ExtResource("1_njs7v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nisa"]
+position = Vector2(3920, 456)
+shape = SubResource("RectangleShape2D_wflx4")
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(0, -537)
+
+[node name="PlayerPhantomCamera2D" type="Node2D" parent="Player"]
+position = Vector2(-1, -49)
+script = ExtResource("3_lso0y")
+priority_override = false
+priority = 0
+zoom = Vector2(0.92, 0.92)
+follow_mode = 1
+follow_target = NodePath("../CharacterBody2D")
+follow_parameters/damping = true
+follow_parameters/damping_value = 50.0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -2104
+limit/top = -1184
+limit/right = 2104
+limit/bottom = 0
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="CharacterBody2D" parent="Player" groups=["Player"] instance=ExtResource("4_uooro")]
+position = Vector2(-1, -7)
+
+[node name="fg" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2105.0
+offset_top = -1184.0
+offset_right = 2105.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("CompressedTexture2D_oddpd")
+
+[node name="hall1limit" type="Node2D" parent="."]
+position = Vector2(0, -464)
+
+[node name="Wall" type="StaticBody2D" parent="hall1limit"]
+position = Vector2(-1944, 464)
+
+[node name="right" type="CollisionShape2D" parent="hall1limit/Wall"]
+position = Vector2(4160, -590)
+shape = SubResource("RectangleShape2D_bxr8s")
+
+[node name="left" type="CollisionShape2D" parent="hall1limit/Wall"]
+position = Vector2(-264, -590)
+shape = SubResource("RectangleShape2D_usid7")
+
+[node name="Floor" type="StaticBody2D" parent="hall1limit"]
+position = Vector2(0, 464)
+
+[node name="Bot" type="CollisionShape2D" parent="hall1limit/Floor"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_iky86")
+
+[node name="CameraFollow" type="Camera2D" parent="."]
+position = Vector2(-1, -586)
+zoom = Vector2(0.92, 0.92)
+limit_left = -2104
+limit_top = -1184
+limit_right = 2104
+limit_bottom = 0
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="CameraFollow"]
+script = ExtResource("2_hhn2e")
