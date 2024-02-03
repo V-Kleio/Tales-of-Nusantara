@@ -229,6 +229,8 @@ func execute_interaction():
 						return
 				else:
 					DialogueManager.show_dialogue_balloon(load("res://dialogue/boss door.dialogue"), "boss")
+			'book' :
+				get_tree().change_scene_to_file("res://scene/IRL/Hall1.tscn")
 
 
 func _on_interaction_area_entered(area):

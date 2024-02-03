@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfwp568a685lc"]
+[gd_scene load_steps=27 format=3 uid="uid://cfwp568a685lc"]
 
 [ext_resource type="TileSet" uid="uid://c4eok1rsabwsw" path="res://ldtk/testing/tilesets/testing-tileset-64x64.res" id="1_8l2q7"]
 [ext_resource type="PackedScene" uid="uid://bn88qvcyxvxnj" path="res://scene/spikes.tscn" id="1_22eh7"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cggknq88nb0ee" path="res://assets/audio/music/Theme Song/Level.mp3" id="18_txhab"]
 [ext_resource type="Script" path="res://scene/interact/actionable.gd" id="18_vfiei"]
 [ext_resource type="AudioStream" uid="uid://cleq1wuxlvgaa" path="res://assets/audio/music/Theme Song/Boss Fight.mp3" id="19_64vp5"]
+[ext_resource type="Texture2D" uid="uid://ihux7rfrejnc" path="res://assets/images/book.png" id="20_qqh4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys07n"]
 size = Vector2(15083, 6438)
@@ -33,6 +34,9 @@ radius = 281.014
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_au00o"]
 size = Vector2(1080, 626)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v58w"]
+size = Vector2(429.998, 743.334)
 
 [node name="testing" type="Node2D"]
 script = ExtResource("1_nehoi")
@@ -58543,5 +58547,20 @@ shape = SubResource("RectangleShape2D_au00o")
 stream = ExtResource("19_64vp5")
 volume_db = -20.0
 bus = &"Music"
+
+[node name="BossBook" type="Sprite2D" parent="." groups=["book"]]
+position = Vector2(14343, 1002)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("20_qqh4k")
+
+[node name="actionable" type="Area2D" parent="BossBook"]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("18_vfiei")
+interact_value = "book"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossBook/actionable"]
+position = Vector2(-1.66797, 138.332)
+shape = SubResource("RectangleShape2D_3v58w")
 
 [connection signal="body_entered" from="BossMusicTrigger" to="." method="_on_boss_music_trigger_body_entered"]

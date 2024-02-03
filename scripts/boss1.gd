@@ -95,6 +95,8 @@ func attacked():
 	print(health)
 
 func die():
+	var book = get_tree().get_first_node_in_group('book')
+	book.visible = true
 	hitbox.disabled = true
 	death_particle.emitting = true
 
@@ -142,7 +144,4 @@ func _on_summon_timer_timeout():
 
 
 func _on_death_particle_finished():
-	var key_drop = key.instantiate()
-	key_drop.position = position
-	get_parent().add_child(key_drop)
 	queue_free()
