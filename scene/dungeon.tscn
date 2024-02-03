@@ -57622,6 +57622,14 @@ tween_on_load = true
 inactive_update_mode = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="player/PhantomCamera2D"]
+layer = -1
+
+[node name="BG" type="TextureRect" parent="player/PhantomCamera2D/CanvasLayer"]
+z_index = -1
+offset_top = -3.0
+offset_right = 1920.0
+offset_bottom = 1079.0
+texture = ExtResource("4_vgl07")
 
 [node name="HPBar" type="TextureProgressBar" parent="player/PhantomCamera2D/CanvasLayer" node_paths=PackedStringArray("player")]
 offset_right = 400.0
@@ -57674,14 +57682,6 @@ scale = Vector2(0.5, 0.5)
 visible = false
 position = Vector2(7272.5, -1486)
 shape = SubResource("RectangleShape2D_ys07n")
-
-[node name="BG" type="Sprite2D" parent="."]
-visible = false
-z_index = -1
-position = Vector2(-311.353, -4900)
-scale = Vector2(7.91477, 6.0963)
-texture = ExtResource("4_vgl07")
-centered = false
 
 [node name="Spikes Area 1" type="Node2D" parent="."]
 
@@ -58539,5 +58539,6 @@ shape = SubResource("RectangleShape2D_au00o")
 [node name="Boss1Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_64vp5")
 volume_db = -20.0
+bus = &"Music"
 
 [connection signal="body_entered" from="BossMusicTrigger" to="." method="_on_boss_music_trigger_body_entered"]
