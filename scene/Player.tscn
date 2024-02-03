@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://t543ml5p86j4"]
+[gd_scene load_steps=32 format=3 uid="uid://t543ml5p86j4"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gc03i"]
 [ext_resource type="Texture2D" uid="uid://ct66gpftkswfc" path="res://assets/character/Overworld/LegendLukeIdleSprite.png" id="2_1u56e"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c4cro3aahf8nl" path="res://assets/character/Overworld/LegendLukeAttack(1000x1080).png" id="5_rrpfs"]
 [ext_resource type="Texture2D" uid="uid://cwwkvwbq3jgnh" path="res://assets/images/DoubleJumpParticle420x200.png" id="6_htjb3"]
 [ext_resource type="Texture2D" uid="uid://b2kfeus2084do" path="res://assets/character/Overworld/CritHit.png" id="7_0xrjk"]
+[ext_resource type="Texture2D" uid="uid://hdb4jt1ta7ld" path="res://assets/images/Reward.png" id="10_84twn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jv26p"]
 atlas = ExtResource("2_72vbp")
@@ -167,11 +168,12 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.25
 scale_max = 0.25
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oanl"]
+size = Vector2(71, 175)
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
+collision_layer = 6
 script = ExtResource("1_gc03i")
-strength = 100
-crit_chance = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -11)
@@ -226,5 +228,20 @@ texture = ExtResource("7_0xrjk")
 lifetime = 0.5
 one_shot = true
 
+[node name="interactLabel" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_84twn")
+
+[node name="ActionableFinder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder"]
+position = Vector2(-2.5, -4.5)
+shape = SubResource("RectangleShape2D_5oanl")
+
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="SideAttack" to="." method="_on_side_attack_body_entered"]
+[connection signal="area_entered" from="ActionableFinder" to="." method="_on_actionable_finder_area_entered"]
+[connection signal="area_exited" from="ActionableFinder" to="." method="_on_actionable_finder_area_exited"]

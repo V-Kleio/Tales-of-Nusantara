@@ -1,0 +1,11 @@
+~ menyala
+???: IPA singkatan dari?
+- Ilmu Pengetahuan Alam
+	???: Salah 
+	=> END
+- Ilmu Padi Abangku
+	???: Menyala Capt! 
+	if !room_open:
+		set room_open = true
+	=> END
+=> END
