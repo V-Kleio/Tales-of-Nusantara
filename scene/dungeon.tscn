@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfwp568a685lc"]
+[gd_scene load_steps=25 format=3 uid="uid://cfwp568a685lc"]
 
 [ext_resource type="TileSet" uid="uid://c4eok1rsabwsw" path="res://ldtk/testing/tilesets/testing-tileset-64x64.res" id="1_8l2q7"]
 [ext_resource type="PackedScene" uid="uid://bn88qvcyxvxnj" path="res://scene/spikes.tscn" id="1_22eh7"]
@@ -16,7 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://cv7udjtboq74r" path="res://scene/interact/actionable.tscn" id="15_fsie8"]
 [ext_resource type="PackedScene" uid="uid://pcpibmb7r22t" path="res://scene/key.tscn" id="16_3f04i"]
 [ext_resource type="Texture2D" uid="uid://d6ka8ammhgws" path="res://assets/images/sign.png" id="17_ao72q"]
+[ext_resource type="AudioStream" uid="uid://cggknq88nb0ee" path="res://assets/audio/music/Theme Song/Level.mp3" id="18_txhab"]
 [ext_resource type="Script" path="res://scene/interact/actionable.gd" id="18_vfiei"]
+[ext_resource type="AudioStream" uid="uid://cleq1wuxlvgaa" path="res://assets/audio/music/Theme Song/Boss Fight.mp3" id="19_64vp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys07n"]
 size = Vector2(15083, 6438)
@@ -28,6 +30,9 @@ size = Vector2(256, 277)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fe5uj"]
 radius = 281.014
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_au00o"]
+size = Vector2(1080, 626)
 
 [node name="testing" type="Node2D"]
 script = ExtResource("1_nehoi")
@@ -58517,3 +58522,22 @@ position = Vector2(-1, 0)
 tile_set = ExtResource("1_8l2q7")
 format = 2
 layer_0/tile_data = PackedInt32Array(1769466, 20, 9, 1703930, 20, 13, 1638394, 20, 13, 1572858, 20, 13, 1507322, 20, 13, 1441786, 20, 13, 1376250, 20, 13, 1310714, 20, 13, 1245178, 20, 13, 1179642, 20, 13, 1114106, 20, 13, 1048570, 20, 13, 983034, 20, 13, 917498, 20, 13, 851962, 20, 13, 786426, 20, 13, 720890, 20, 13, 655354, 20, 13, 589818, 20, 13, 524282, 20, 13, 458746, 20, 13, 393210, 20, 13, 327674, 20, 13, 262138, 20, 13, 196602, 20, 13, 131066, 20, 13, 65530, 20, 13, -6, 20, 13, -65542, 20, 13, -131078, 20, 13, -196614, 20, 13, -262150, 20, 13, -327686, 20, 13, -393222, 20, 13, -458758, 20, 13, -524294, 20, 13, -589830, 20, 13, -655366, 20, 13, -720902, 20, 13, -786438, 20, 13, -851974, 20, 13, -917510, 20, 13, -983046, 20, 13, -1048582, 20, 13, -1114118, 20, 13, -1179654, 20, 13, -1245190, 20, 13, -1310726, 20, 13, -1376262, 20, 13, -1441798, 20, 13, -1507334, 20, 13, -1572870, 20, 13, -1638406, 20, 13, -1703942, 20, 13, -1769478, 20, 13, -1835014, 20, 13, -1900550, 20, 13, -1966086, 20, 13, -2031622, 20, 13, -2097158, 20, 13, -2162694, 20, 13, -2228230, 20, 13, -2293766, 20, 13, -2359302, 20, 13, -2424838, 20, 13, -2490374, 20, 13, -2555910, 20, 13, -2621446, 20, 13, -2686982, 20, 13, -2752518, 20, 13, -2818054, 20, 13, -2883590, 20, 13, -2949126, 20, 13, -3014662, 20, 13, -3080198, 20, 13, -3145734, 20, 13, -3211270, 20, 13, -3276806, 20, 13, -3342342, 20, 13, -3407878, 20, 13, -3473414, 20, 13, -3538950, 20, 13, -3604486, 20, 13, -3670022, 20, 13, -3735558, 20, 13, -3801094, 20, 13, -3866630, 20, 13, -3932166, 20, 13, -3997702, 20, 13, -4063238, 20, 13, -4128774, 20, 13, -4194310, 20, 13, -4259846, 20, 13, -4325382, 20, 13, -4390918, 20, 13, -4456454, 20, 13, -4521990, 20, 13, -4587526, 20, 13, -4653062, 20, 13, -4718598, 20, 13, -4784134, 20, 11, -4849433, 20, 11, -4783897, 20, 13, -4718361, 20, 13, -4652825, 20, 13, -4587289, 20, 13, -4521753, 20, 13, -4456217, 20, 13, -4390681, 20, 13, -4325145, 20, 13, -4259609, 20, 13, -4194073, 20, 13, -4128537, 20, 13, -4063001, 20, 13, -3997465, 20, 13, -3931929, 20, 13, -3866393, 20, 13, -3800857, 20, 13, -3735321, 20, 13, -3669785, 20, 13, -3604249, 20, 13, -3538713, 20, 13, -3473177, 20, 13, -3407641, 20, 13, -3342105, 20, 13, -3276569, 20, 13, -3211033, 20, 13, -3145497, 20, 13, -3079961, 20, 13, -3014425, 20, 13, -2948889, 20, 13, -2883353, 20, 13, -2817817, 20, 13, -2752281, 20, 13, -2686745, 20, 13, -2621209, 20, 13, -2555673, 20, 13, -2490137, 20, 13, -2424601, 20, 13, -2359065, 20, 13, -2293529, 20, 13, -2227993, 20, 13, -2162457, 20, 13, -2096921, 20, 13, -2031385, 20, 13, -1965849, 20, 13, -1900313, 20, 13, -1834777, 20, 13, -1769241, 20, 13, -1703705, 20, 13, -1638169, 20, 13, -1572633, 20, 13, -1507097, 20, 13, -1441561, 20, 13, -1376025, 20, 9)
+
+[node name="DungeonMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_txhab")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="BossMusicTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossMusicTrigger"]
+position = Vector2(13297, -842)
+shape = SubResource("RectangleShape2D_au00o")
+
+[node name="Boss1Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_64vp5")
+volume_db = -20.0
+
+[connection signal="body_entered" from="BossMusicTrigger" to="." method="_on_boss_music_trigger_body_entered"]
