@@ -12,6 +12,7 @@ extends Control
 @onready var pinky = $pinky_button
 @onready var index = $index_button
 @onready var thumb = $thumb_button
+@onready var back_button = $BackButton
 
 @onready var pinky_hover = $"pinky_button/Pinky-hover"
 @onready var index_hover = $"index_button/Index-hover"
@@ -72,6 +73,7 @@ func refresh():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	back_button.hide()
 	luke_idle.show()
 	luke_pinky.hide()
 	luke_thumb.hide()
@@ -125,12 +127,15 @@ func ai_anim(val):
 		nisa_thumb.show()
 		
 func end_scene():
-	get_tree().paused = true
+	back_button.show()
+	pinky.disabled = true
+	index.disabled = true
+	thumb.disabled = true
 	if win_count >= 2:
 		critChance.show()
 		Stats.crit_chance += 10
 	else :
-		print('kalah')
+		lost.show()
 
 func _on_pinky_button_pressed():
 	hide_button()
@@ -203,11 +208,5 @@ func _on_thumb_button_mouse_entered():
 func _on_thumb_button_mouse_exited():
 	thumb_hover.hide()
 
-
-
-
-
-
-
-
-
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file("res://scene/IRL/Hall2.tscn")

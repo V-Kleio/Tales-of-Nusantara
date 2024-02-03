@@ -23,22 +23,34 @@ config/icon="res://icon.svg"
 
 MetSys="res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 GameManager="*res://scripts/GameManager.gd"
+Stats="*res://scripts/stats.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-Stats="*res://scripts/stats.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"luke": "res://dialogic/character/luke.dch"
+"Bu Sri": "res://dialogic/character/Bu Sri.dch",
+"Raka": "res://dialogic/character/Raka.dch",
+"batu_menangis": "res://dialogic/character/batu_menangis.dch",
+"luke": "res://dialogic/character/luke.dch",
+"nisa": "res://dialogic/character/nisa.dch"
 }
 directories/dtl_directory={
+"after_boss1": "res://dialogic/after_boss1.dtl",
 "locked_room": "res://dialogic/locked_room.dtl",
+"post_rps": "res://dialogic/post_rps.dtl",
+"post_trivia": "res://dialogic/post_trivia.dtl",
+"post_tt": "res://dialogic/post_tt.dtl",
+"pre_rps": "res://dialogic/pre_rps.dtl",
+"pre_trivia_1": "res://dialogic/pre_trivia_1.dtl",
+"pre_trivia_2": "res://dialogic/pre_trivia_2.dtl",
+"pre_tt": "res://dialogic/pre_tt.dtl",
 "start_dungeon": "res://dialogic/start_dungeon.dtl",
 "start_timeline": "res://dialogic/start_timeline.dtl"
 }
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://dialogic/VN.tres"]
+layout/default_style="res://dialogic/VN.tres"
 glossary/default_case_sensitive=true
 variables={}
 text/letter_speed=0.01

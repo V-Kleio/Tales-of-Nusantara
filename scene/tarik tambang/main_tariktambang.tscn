@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl642q5ghqwp"]
+[gd_scene load_steps=11 format=3 uid="uid://cl642q5ghqwp"]
 
 [ext_resource type="PackedScene" uid="uid://bh5dnpks4vb1" path="res://scene/tarik tambang/pTariktambang.tscn" id="1_crck6"]
 [ext_resource type="Texture2D" uid="uid://y7k6048r3jr4" path="res://assets/TugOfWar/BackgroundTambang.png" id="1_dapy1"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/tarik tambang/win_block.gd" id="3_vsm70"]
 [ext_resource type="PackedScene" uid="uid://b5ewychrrplg3" path="res://scene/tarik tambang/lose_block.tscn" id="4_4de4r"]
 [ext_resource type="Script" path="res://scripts/tarik tambang/almost_block.gd" id="5_enw6y"]
+[ext_resource type="Texture2D" uid="uid://ih1djrk46f2n" path="res://assets/images/back.png" id="7_e1g03"]
+[ext_resource type="Texture2D" uid="uid://cs5y1381lfjdc" path="res://assets/images/backhover.png" id="8_wogch"]
 
 [sub_resource type="GDScript" id="GDScript_f73iq"]
 script/source = "extends Node2D
@@ -13,10 +15,23 @@ script/source = "extends Node2D
 # =============== OY OY OY ===============
 # script banyak di pTarikTambang.tscn atau pTarikTambang.gd
 # =============== OY OY OY ===============
+@onready var back_button = $BackButton
+
+
+func _ready():
+	back_button.hide()
+	$playerTarikTambang.game_over.connect(showButton)
 
 func _on_Area2D_area_entered(area):
 	print('collided')
 
+func showButton():
+	back_button.show()
+
+
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file(\"res://scene/IRL/Hall1.tscn\") # Replace with function body.
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhchu"]
@@ -47,4 +62,13 @@ script = ExtResource("5_enw6y")
 position = Vector2(138, 704)
 shape = SubResource("RectangleShape2D_mhchu")
 
+[node name="BackButton" type="TextureButton" parent="."]
+z_index = 20
+offset_right = 165.0
+offset_bottom = 153.0
+texture_normal = ExtResource("7_e1g03")
+texture_pressed = ExtResource("8_wogch")
+texture_hover = ExtResource("8_wogch")
+
 [connection signal="input_event" from="playerTarikTambang" to="." method="_on_player_tarik_tambang_input_event"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

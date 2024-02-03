@@ -13,6 +13,8 @@ extends Control
 @onready var Submit = $Submit
 @onready var health = $Health
 @onready var bg = $TextureRect2
+@onready var back_button = $BackButton
+
 
 @onready var label0 = $Label_0
 @onready var label1 = $Label_1
@@ -54,6 +56,7 @@ func refresh_scene():
 	show_question()
 	if count == 3:
 		show_result()
+		back_button.show()
 
 # sesuai nama
 func show_question():
@@ -96,6 +99,8 @@ func _ready():
 	w0.hide()
 	w1.hide()
 	w2.hide()
+	
+	back_button.hide()
 
 # baca json
 func read_json_file(src):
@@ -163,3 +168,7 @@ func _on_opsi_2_pressed():
 		
 	await get_tree().create_timer(3).timeout
 	refresh_scene()
+
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file("res://scene/IRL/Classroom.tscn")

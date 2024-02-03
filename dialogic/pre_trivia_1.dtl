@@ -1,0 +1,8 @@
+[background arg="res://assets/asset background/kelas.png" fade="0.0"]
+join "Bu Sri" 3
+join luke (2) 1
+"Bu Sri": Hai nak tumben ada di kelas jam segini
+luke: Bu, maaf kalau agak tidak sopan. Bolehkah saya minta tes
+"Bu Sri": Kamu mau mengerjakan tes dari ibu? Boleh nak, sebentar ibu buatkan dulu
+Beberapa menit kemudian
+"Bu Sri": Ini nak coba kerjakan

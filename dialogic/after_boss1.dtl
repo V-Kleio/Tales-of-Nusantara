@@ -1,0 +1,6 @@
+[background arg="res://assets/asset background/background forest.png" fade="0.0"]
+join luke 1
+luke: hah hah hah... Batu Sialan!
+join batu_menangis 3
+batu_menangis: hiks hiks
+luke: <Empty Text Event>
