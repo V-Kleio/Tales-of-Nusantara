@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsllc0gb3k44a"]
+
+[ext_resource type="Texture2D" uid="uid://bwuh64s68pt3p" path="res://assets/asset background/kelas1.png" id="1_ftf57"]
+[ext_resource type="Texture2D" uid="uid://dyn65mlkylkwp" path="res://assets/asset background/kelas2.png" id="2_1w6sb"]
+[ext_resource type="Texture2D" uid="uid://y883r844fo17" path="res://assets/character/IRL/BuSri.png" id="3_075vk"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="4_c7ipt"]
+[ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="5_7mrh1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_446lg"]
+size = Vector2(256, 1196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pr7c"]
+size = Vector2(198, 1180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v6wj"]
+size = Vector2(4050, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg57g"]
+size = Vector2(648, 744)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="bg" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2096.0
+offset_top = -1016.0
+offset_right = 2114.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_ftf57")
+
+[node name="classroomlimit" type="Node2D" parent="."]
+position = Vector2(0, -464)
+
+[node name="Wall" type="StaticBody2D" parent="classroomlimit"]
+position = Vector2(-1944, 464)
+
+[node name="right" type="CollisionShape2D" parent="classroomlimit/Wall"]
+position = Vector2(2904, -426)
+shape = SubResource("RectangleShape2D_446lg")
+
+[node name="left" type="CollisionShape2D" parent="classroomlimit/Wall"]
+position = Vector2(-248, -422)
+shape = SubResource("RectangleShape2D_5pr7c")
+
+[node name="Floor" type="StaticBody2D" parent="classroomlimit"]
+position = Vector2(0, 464)
+
+[node name="Bot" type="CollisionShape2D" parent="classroomlimit/Floor"]
+position = Vector2(-1, 64)
+shape = SubResource("RectangleShape2D_2v6wj")
+
+[node name="fg" type="TextureRect" parent="."]
+offset_left = -2096.0
+offset_top = -1016.0
+offset_right = 2114.0
+offset_bottom = 168.0
+texture = ExtResource("2_1w6sb")
+
+[node name="BuSri" type="Area2D" parent="."]
+position = Vector2(-2096, -1016)
+
+[node name="Sprite2D" type="Sprite2D" parent="BuSri"]
+position = Vector2(3232, 800)
+scale = Vector2(1.84331, 1.84331)
+texture = ExtResource("3_075vk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuSri"]
+position = Vector2(3052, 716)
+shape = SubResource("RectangleShape2D_cg57g")
+debug_color = Color(0.847059, 0, 0.901961, 0.419608)
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(0, -537)
+
+[node name="PlayerPhantomCamera2D" type="Node2D" parent="Player"]
+position = Vector2(648, 119)
+script = ExtResource("4_c7ipt")
+priority_override = false
+priority = 0
+zoom = Vector2(0.92, 0.92)
+follow_mode = 1
+follow_target = NodePath("../CharacterBody2D")
+follow_parameters/damping = true
+follow_parameters/damping_value = 50.0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = true
+limit/left = -2016
+limit/top = -1008
+limit/right = 2016
+limit/bottom = 168
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="CharacterBody2D" parent="Player" groups=["Player"] instance=ExtResource("5_7mrh1")]
+position = Vector2(648, 233)
