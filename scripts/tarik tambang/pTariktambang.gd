@@ -16,6 +16,8 @@ var speed = 0
 var current_dir = "none"
 var start = false
 
+signal game_over()
+
 
 func _ready():
 	win.hide()
@@ -53,18 +55,16 @@ func _on_area_2d_area_entered(area):
 		Stats.stregth += 1
 		print('menang')
 		str.show()
-		get_tree().paused = true
 		print(Stats.stregth)
+		game_over.emit()
 
 
 	elif area.is_in_group('lose_block'):
 		lost.show()
 		almost.hide()
 		print('kalah') 
-		get_tree().paused = true
+		game_over.emit()
 		
 	elif area.is_in_group('almost_block'):
 		almost.show()
-
-
-
+	

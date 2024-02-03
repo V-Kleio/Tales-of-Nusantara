@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bs05uy8a6itdb"]
+[gd_scene load_steps=23 format=3 uid="uid://bs05uy8a6itdb"]
 
 [ext_resource type="Script" path="res://scripts/RPS/main_RFS.gd" id="1_wfbta"]
 [ext_resource type="Texture2D" uid="uid://cpw7jxqmlsbx" path="res://assets/RPS/RPS/bg.png" id="2_d8cgl"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://b8v88m6wkguyi" path="res://assets/RPS/RPS/lost.png" id="18_r7ahn"]
 [ext_resource type="Texture2D" uid="uid://bsyj0c5cvgh83" path="res://assets/RPS/RPS/critchance.png" id="19_d8wnv"]
 [ext_resource type="Texture2D" uid="uid://8recwvjit5oy" path="res://assets/RPS/RPS/seri.png" id="20_tled4"]
+[ext_resource type="Texture2D" uid="uid://ih1djrk46f2n" path="res://assets/images/back.png" id="21_irmce"]
+[ext_resource type="Texture2D" uid="uid://cs5y1381lfjdc" path="res://assets/images/backhover.png" id="22_tf166"]
 
 [node name="main_RPS" type="Control"]
 layout_mode = 3
@@ -133,6 +135,14 @@ texture = ExtResource("19_d8wnv")
 position = Vector2(1736, 208)
 texture = ExtResource("20_tled4")
 
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("21_irmce")
+texture_pressed = ExtResource("22_tf166")
+texture_hover = ExtResource("22_tf166")
+
 [connection signal="mouse_entered" from="pinky_button" to="." method="_on_pinky_button_mouse_entered"]
 [connection signal="mouse_exited" from="pinky_button" to="." method="_on_pinky_button_mouse_exited"]
 [connection signal="pressed" from="pinky_button" to="." method="_on_pinky_button_pressed"]
@@ -142,3 +152,4 @@ texture = ExtResource("20_tled4")
 [connection signal="mouse_entered" from="thumb_button" to="." method="_on_thumb_button_mouse_entered"]
 [connection signal="mouse_exited" from="thumb_button" to="." method="_on_thumb_button_mouse_exited"]
 [connection signal="pressed" from="thumb_button" to="." method="_on_thumb_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

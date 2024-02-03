@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c77npili4pel4"
-path="res://.godot/imported/level_spritesheet.png-26a44dd21a040a5480d5ccba54377d99.ctex"
+uid="uid://cs5y1381lfjdc"
+path="res://.godot/imported/backhover.png-bb9906e7006fb436ce1180d9cd2a50ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/phantom_camera/examples/textures/2D/level_spritesheet.png"
-dest_files=["res://.godot/imported/level_spritesheet.png-26a44dd21a040a5480d5ccba54377d99.ctex"]
+source_file="res://assets/images/backhover.png"
+dest_files=["res://.godot/imported/backhover.png-bb9906e7006fb436ce1180d9cd2a50ba.ctex"]
 
 [params]
 

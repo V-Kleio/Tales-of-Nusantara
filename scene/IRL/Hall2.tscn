@@ -1,18 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://oo8ecv4liyfc"]
+[gd_scene load_steps=12 format=3 uid="uid://oo8ecv4liyfc"]
 
-[ext_resource type="Texture2D" uid="uid://d0fpxh44ln0j6" path="res://assets/character/IRL/Nisa.png" id="1_njs7v"]
+[ext_resource type="Texture2D" uid="uid://c14p0n8jq188h" path="res://assets/asset background/Hallway3.png" id="1_386j6"]
+[ext_resource type="Texture2D" uid="uid://d0fpxh44ln0j6" path="res://assets/IRL/Nisa.png" id="1_njs7v"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hhn2e"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="3_lso0y"]
 [ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="4_uooro"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ojgt"]
-load_path = "res://.godot/imported/Hallway3.png-456ba8d4111a5d3291cd0c0c333c4dd9.ctex"
+[ext_resource type="Texture2D" uid="uid://4c7xipabqw51" path="res://assets/asset background/Hallway4.png" id="5_di0d1"]
+[ext_resource type="Script" path="res://scene/interact/actionable.gd" id="6_76d1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wflx4"]
 size = Vector2(165, 512)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oddpd"]
-load_path = "res://.godot/imported/Hallway4.png-45c1c78ab3f05f17ed9a197f52c63d85.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxr8s"]
 size = Vector2(208, 1188)
@@ -36,25 +33,28 @@ offset_top = -1184.0
 offset_right = 2105.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("CompressedTexture2D_4ojgt")
+texture = ExtResource("1_386j6")
 
 [node name="Nisa" type="Area2D" parent="."]
-position = Vector2(-2096, -1016)
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("6_76d1q")
+interact_value = "rps"
 
 [node name="Sprite2D" type="Sprite2D" parent="Nisa"]
-position = Vector2(3922.71, 471.535)
+position = Vector2(1826.71, -544.465)
 scale = Vector2(1.81421, 1.81421)
 texture = ExtResource("1_njs7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nisa"]
-position = Vector2(3920, 456)
+position = Vector2(1824, -560)
 shape = SubResource("RectangleShape2D_wflx4")
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(0, -537)
+position = Vector2(-1903, -541)
 
 [node name="PlayerPhantomCamera2D" type="Node2D" parent="Player"]
-position = Vector2(-1, -49)
+position = Vector2(843, -45)
 script = ExtResource("3_lso0y")
 priority_override = false
 priority = 0
@@ -90,7 +90,7 @@ offset_top = -1184.0
 offset_right = 2105.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("CompressedTexture2D_oddpd")
+texture = ExtResource("5_di0d1")
 
 [node name="hall1limit" type="Node2D" parent="."]
 position = Vector2(0, -464)
@@ -114,7 +114,7 @@ position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_iky86")
 
 [node name="CameraFollow" type="Camera2D" parent="."]
-position = Vector2(-1, -586)
+position = Vector2(-1060, -586)
 zoom = Vector2(0.92, 0.92)
 limit_left = -2104
 limit_top = -1184
@@ -124,3 +124,13 @@ editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="CameraFollow"]
 script = ExtResource("2_hhn2e")
+
+[node name="actionable" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("6_76d1q")
+interact_value = "hall_1"
+
+[node name="left" type="CollisionShape2D" parent="actionable"]
+position = Vector2(-1997, -598)
+shape = SubResource("RectangleShape2D_usid7")

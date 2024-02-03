@@ -1,0 +1,5 @@
+[background arg="res://assets/asset background/Hall1.png" fade="0.0"]
+join luke (2) 1
+join Raka 3
+luke: ...
+Raka: BACOT!

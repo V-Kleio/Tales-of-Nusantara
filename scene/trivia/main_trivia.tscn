@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdoticcdod58y"]
+[gd_scene load_steps=15 format=3 uid="uid://cdoticcdod58y"]
 
 [ext_resource type="Script" path="res://scripts/trivia/main_trivia.gd" id="1_3quwn"]
 [ext_resource type="Texture2D" uid="uid://brcnblph7ffdb" path="res://assets/Trivia/BackgroundTrivia.png" id="2_yysjm"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cwta6p0ouk122" path="res://assets/Trivia/ButtonHover.png" id="8_bttyi"]
 [ext_resource type="Texture2D" uid="uid://d2bqpus5aeynk" path="res://assets/Trivia/ButtonRight.png" id="9_ha4xw"]
 [ext_resource type="Texture2D" uid="uid://qqty4os18ilu" path="res://assets/Trivia/ButtonWrong.png" id="10_yh3i2"]
+[ext_resource type="Texture2D" uid="uid://ih1djrk46f2n" path="res://assets/images/back.png" id="13_g418b"]
 [ext_resource type="Texture2D" uid="uid://u2gcquu2khr" path="res://assets/Trivia/Health.png" id="13_r8luk"]
+[ext_resource type="Texture2D" uid="uid://cs5y1381lfjdc" path="res://assets/images/backhover.png" id="14_bnyeb"]
 
 [node name="main_trivia" type="Control"]
 layout_mode = 3
@@ -170,6 +172,19 @@ position = Vector2(648, 752)
 scale = Vector2(1.07025, 1.08986)
 texture = ExtResource("13_r8luk")
 
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -221.0
+offset_bottom = 217.0
+grow_horizontal = 0
+texture_normal = ExtResource("13_g418b")
+texture_pressed = ExtResource("14_bnyeb")
+texture_hover = ExtResource("14_bnyeb")
+
 [connection signal="pressed" from="opsi_0" to="." method="_on_opsi_0_pressed"]
 [connection signal="pressed" from="opsi_1" to="." method="_on_opsi_1_pressed"]
 [connection signal="pressed" from="opsi_2" to="." method="_on_opsi_2_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,16 @@
+[background arg="res://assets/asset background/Hall2.png" fade="0.0"]
+join luke (2) 1
+join nisa 3
+nisa: Hei, Luke
+luke: Hm? Kamu tau namaku?
+nisa: Kau kan orang belanda yang pindah beberapa bulan yang lalu kan? Tau lah.
+luke: ...
+nisa: Hei, kau mau main Semut-Orang-Gajah
+luke: Apa itu?
+nisa: Intinya sama kayak suit. Pernah main suit?
+luke: Yang Gunting-Batu-Kertas? Pernah.
+nisa: Ya, tapi disini kelingking menandakan semut, telunjuk menandakan orang, dan jempol menandakan gajah.
+nisa: Semut akan kalah oleh orang, orang akan kalah oleh gajah, dan gajah akan kalah oleh semut
+nisa: Kita main tiga kali dan kalo kau menang akan kukasi hadiah. Seri gak dihitung. Bagaimana menurutmu?\
+
+luke: Oke, ayo main.

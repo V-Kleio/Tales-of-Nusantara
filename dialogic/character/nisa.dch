@@ -8,25 +8,16 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "1",
+"default_portrait": "nisa",
 "description": "",
-"display_name": "Luke",
+"display_name": "Nisa",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"1": {
+"nisa": {
 "export_overrides": {
-"image": "\"res://assets/Dialog/Legend/Parts/DialogLLuke1.png\""
-},
-"mirror": false,
-"offset": Vector2(0, 0),
-"scale": 0.5,
-"scene": ""
-},
-"2": {
-"export_overrides": {
-"image": "\"res://assets/Dialog/RL/Digabung/DialogLuke1.png\""
+"image": "\"res://assets/Dialog/RL/Digabung/DialogNisa1.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

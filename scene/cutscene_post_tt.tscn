@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqppdtqwdx0hl"]
+
+[ext_resource type="Script" path="res://scripts/Cutscene Post TT.gd" id="1_tlshm"]
+
+[node name="Cutscene Post TT" type="Node2D"]
+script = ExtResource("1_tlshm")
