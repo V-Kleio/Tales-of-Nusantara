@@ -8,16 +8,16 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "Batu",
+"default_portrait": "Ayu",
 "description": "",
-"display_name": "Batu Menangis",
+"display_name": "Ayu",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
-"Batu": {
+"Ayu": {
 "export_overrides": {
-"image": "\"res://assets/Dialog/Legend/Parts/DialogBatuMenangis.png\""
+"image": "\"res://assets/Dialog/Legend/Parts/DialogLAyu3.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

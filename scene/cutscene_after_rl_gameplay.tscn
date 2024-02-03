@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://qm8snpj1tj80"]
+
+[ext_resource type="Script" path="res://scripts/cutscene_after_rl_gameplay.gd" id="1_iedmg"]
+
+[node name="Cutscene After RL Gameplay" type="Node2D"]
+script = ExtResource("1_iedmg")
