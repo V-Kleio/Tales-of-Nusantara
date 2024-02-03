@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var wall_check = $WallCheck
 @onready var spawn_particle = $SpawnParticle
 @onready var death_particle = $DeathParticle
+@onready var death_sound = $DeathSound
 
 var health_item = preload("res://scene/health_collectible.tscn")
 var health_drop_chance = 20
@@ -70,6 +71,7 @@ func _physics_process(delta):
 	
 	if health <= 0:
 		death_particle.emitting = true
+		death_sound.play()
 		is_death = true
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5riugiewiwxo"]
+[gd_scene load_steps=17 format=3 uid="uid://5riugiewiwxo"]
 
 [ext_resource type="Script" path="res://scripts/enemy2.gd" id="1_bt4ul"]
 [ext_resource type="Texture2D" uid="uid://ruchgsoheh35" path="res://assets/enemy/Kuyang600x900.png" id="3_wey2p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhg3tcedt0n8x" path="res://assets/images/Dust Particle.png" id="4_wwtag"]
 [ext_resource type="Texture2D" uid="uid://be4r5e64nygq" path="res://assets/images/Detected.png" id="5_fy23x"]
 [ext_resource type="AudioStream" uid="uid://c6iwv8ridphkh" path="res://assets/audio/sfx/69_Enemy_death_01.wav" id="6_8y7vk"]
+[ext_resource type="AudioStream" uid="uid://c3qlq2v8ve4qu" path="res://assets/audio/sfx/45_Charge_05.wav" id="7_6u4h1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20sgj"]
 atlas = ExtResource("3_wey2p")
@@ -136,7 +137,12 @@ one_shot = true
 stream = ExtResource("6_8y7vk")
 bus = &"SFX"
 
+[node name="DetectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_6u4h1")
+bus = &"SFX"
+
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="finished" from="SpawnParticle" to="." method="_on_spawn_particle_finished"]
+[connection signal="finished" from="DetectParticle" to="." method="_on_detect_particle_finished"]
 [connection signal="finished" from="DeathParticle" to="." method="_on_death_particle_finished"]

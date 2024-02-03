@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var ground_time = $GroundTime
 @onready var summon_timer = $SummonTimer
 @onready var death_particle = $DeathParticle
+@onready var landing_sound = $LandingSound
+@onready var death_sound = $DeathSound
 
 var key = preload("res://scene/key.tscn")
 var enemy1 = preload("res://scene/enemy1.tscn")
@@ -74,6 +76,7 @@ func _physics_process(delta):
 	if health <= 0:
 		is_death = true
 		animated_sprite_2d.animation = "death"
+		death_sound.play()
 		die()
 
 func flip():
@@ -122,6 +125,7 @@ func summon():
 
 
 func _on_landing_check_body_entered(body):
+	landing_sound.play()
 	ground_time.start()
 
 

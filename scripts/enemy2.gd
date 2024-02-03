@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var spawn_particle = $SpawnParticle
 @onready var death_particle = $DeathParticle
 @onready var hurtbox = $Hurtbox
+@onready var death_sound = $DeathSound
+@onready var detect_sound = $DetectSound
 
 var health_item = preload("res://scene/health_collectible.tscn")
 var health_drop_chance = 20
@@ -52,6 +54,7 @@ func _physics_process(_delta):
 	
 	if health <= 0:
 		death_particle.emitting = true
+		death_sound.play()
 		is_death = true
 
 func track_player():
