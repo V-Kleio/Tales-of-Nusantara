@@ -117,4 +117,6 @@ func _on_down_time_timer_timeout():
 
 
 func _on_death_particle_finished():
+	get_tree().get_first_node_in_group('ayu').disabled = false
+	get_tree().get_first_node_in_group('sprite').visible = true
 	queue_free()

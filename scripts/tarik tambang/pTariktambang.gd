@@ -51,6 +51,7 @@ func player_movement(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group('block'):
+		speed = 99999999999999999
 		win.show()
 		Stats.strength *= 2
 		print('menang')

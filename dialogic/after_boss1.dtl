@@ -1,15 +1,17 @@
 [background arg="res://assets/asset background/background forest.png" fade="0.0"]
 join luke 1
-join batu_menangis 3
-batu_menangis: hiks hiks
+join  3
+hiks hiks
 luke: ....
-batu_menangis: Maafin aku bu...
+Maafin aku bu...
 luke: ....
-leave batu_menangis
+leave 
 luke: Apa yang baru saja terjadi? Batu Menangis?
 luke: Ini… buku yang tadi? Yang di hutan belakang sekolah?
 Luke membuka bukunya
+leave luke
 [background arg="res://assets/asset background/Hall1.png" fade="0.0"]
+join luke (2) 1
 luke: Aku....
 luke: Aku pulang!!!!
 luke: Akhirnya, tapi bagaimana dengan Ayu?
@@ -18,3 +20,6 @@ Luke pun mencari Ayu di sekolah
 Beberapa saat kemudian
 luke: Aku tidak dapat menemukannya
 luke: Aku harus kembali besok setelah sekolah selesai
+leave luke
+[background arg="res://assets/images/1920x1080-black-solid-color-background.jpg" fade="0.0"]
+Keesokan harinya...

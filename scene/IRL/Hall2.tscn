@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://oo8ecv4liyfc"]
+[gd_scene load_steps=15 format=3 uid="uid://oo8ecv4liyfc"]
 
 [ext_resource type="Texture2D" uid="uid://c14p0n8jq188h" path="res://assets/asset background/Hallway3.png" id="1_386j6"]
 [ext_resource type="Texture2D" uid="uid://d0fpxh44ln0j6" path="res://assets/IRL/Nisa.png" id="1_njs7v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4c7xipabqw51" path="res://assets/asset background/Hallway4.png" id="5_di0d1"]
 [ext_resource type="Script" path="res://scene/interact/actionable.gd" id="6_76d1q"]
 [ext_resource type="AudioStream" uid="uid://d7nvq623lsks" path="res://assets/audio/music/Theme Song/School.mp3" id="8_r1o5w"]
+[ext_resource type="Texture2D" uid="uid://ihux7rfrejnc" path="res://assets/images/book.png" id="9_0xtlu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wflx4"]
 size = Vector2(165, 512)
@@ -20,6 +21,9 @@ size = Vector2(203, 1180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iky86"]
 size = Vector2(4200, 138)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwqil"]
+radius = 123.628
 
 [node name="Node2D" type="Node2D"]
 
@@ -141,3 +145,18 @@ stream = ExtResource("8_r1o5w")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
+
+[node name="book" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("6_76d1q")
+interact_value = "butoijo"
+
+[node name="Sprite2D" type="Sprite2D" parent="book"]
+position = Vector2(1079, -332)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_0xtlu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="book"]
+position = Vector2(1082, -330)
+shape = SubResource("CircleShape2D_jwqil")

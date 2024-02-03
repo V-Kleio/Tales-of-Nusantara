@@ -109,3 +109,4 @@ func execute_interaction():
 					get_tree().change_scene_to_file("res://scene/cutscene_pre_rps.tscn")
 				else:
 					get_tree().change_scene_to_file("res://scene/cutscene_post_rps.tscn")
+			"butoijo": get_tree().change_scene_to_file("res://scene/cutscene_after_rl_gameplay.tscn")

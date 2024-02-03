@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crtax1x3nkd6v"]
+[gd_scene load_steps=16 format=3 uid="uid://crtax1x3nkd6v"]
 
 [ext_resource type="TileSet" uid="uid://c4eok1rsabwsw" path="res://ldtk/testing/tilesets/testing-tileset-64x64.res" id="1_0toq1"]
 [ext_resource type="Script" path="res://scripts/final_boss__stage.gd" id="1_5k5y0"]
@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bw65nrtpfb0ny" path="res://assets/asset background/background ruins.png" id="8_vqvoh"]
 [ext_resource type="PackedScene" uid="uid://b63lhhk4oe3jr" path="res://scene/buto_ijo.tscn" id="9_h4r5x"]
 [ext_resource type="AudioStream" uid="uid://b010nemaj84jb" path="res://assets/audio/music/Theme Song/Boss Fight 2.mp3" id="10_3uu57"]
+[ext_resource type="Texture2D" uid="uid://c02e0yw5an4ge" path="res://assets/character/LegendAyu.png" id="12_1bfq5"]
+[ext_resource type="Script" path="res://scene/interact/actionable.gd" id="12_wgfwx"]
+[ext_resource type="PackedScene" uid="uid://bvmgo7qwx1mw7" path="res://scene/checkpoint.tscn" id="14_gsu5y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh7tb"]
+size = Vector2(278, 211.5)
 
 [node name="Final Boss  Stage" type="Node2D"]
 script = ExtResource("1_5k5y0")
@@ -14976,3 +14982,22 @@ position = Vector2(4701, 921)
 stream = ExtResource("10_3uu57")
 volume_db = -20.0
 bus = &"Music"
+
+[node name="Ayu" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("12_wgfwx")
+interact_value = "ayu"
+
+[node name="Sprite2D" type="Sprite2D" parent="Ayu" groups=["sprite"]]
+position = Vector2(8506, 1083)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("12_1bfq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ayu" groups=["ayu"]]
+position = Vector2(8501, 1056)
+shape = SubResource("RectangleShape2D_uh7tb")
+
+[node name="Checkpoint" parent="." instance=ExtResource("14_gsu5y")]
+position = Vector2(456, 1018)
+scale = Vector2(0.4, 0.4)

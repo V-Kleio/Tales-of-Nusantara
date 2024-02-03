@@ -230,8 +230,9 @@ func execute_interaction():
 				else:
 					DialogueManager.show_dialogue_balloon(load("res://dialogue/boss door.dialogue"), "boss")
 			'book' :
-				get_tree().change_scene_to_file("res://scene/IRL/Hall1.tscn")
-
+				get_tree().change_scene_to_file("res://scene/cutscene_after_boss_1.tscn")
+			'ayu':
+				get_tree().change_scene_to_file("res://scene/cutscene_after_boss_2.tscn")
 
 func _on_interaction_area_entered(area):
 	all_interaction.insert(0, area)

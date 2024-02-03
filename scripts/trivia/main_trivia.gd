@@ -78,7 +78,7 @@ func show_result():
 	if score >= 60:
 		greet = "congrat"
 		health.show()
-		Stats.max_health += 10
+		Stats.max_health += 50
 	else:
 		greet = "nice try"
 	Soal.text = "{greet} ! your score is {score}".format({"greet" = greet, "score" = score})
