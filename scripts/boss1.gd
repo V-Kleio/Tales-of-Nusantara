@@ -92,6 +92,7 @@ func flip():
 
 func attacked():
 	is_attacked = true
+	print(health)
 
 func die():
 	hitbox.disabled = true

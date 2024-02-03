@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bg3wbqie4p2n7" path="res://scene/enemy1.tscn" id="4_1lbl3"]
 [ext_resource type="PackedScene" uid="uid://5riugiewiwxo" path="res://scene/enemy2.tscn" id="5_i81b7"]
 [ext_resource type="PackedScene" uid="uid://dsgkkksswf40s" path="res://scene/boss1.tscn" id="7_8sorq"]
-[ext_resource type="PackedScene" uid="uid://b63lhhk4oe3jr" path="res://scene/buto_ijo.tscn" id="7_meb0v"]
+[ext_resource type="PackedScene" path="res://scene/buto_ijo.tscn" id="7_meb0v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8rylr"]
 texture = ExtResource("3_k6s4g")

@@ -38,8 +38,6 @@ const LIMIT_MARGIN_PROPERTY_NAME: StringName = CAMERA_2D_LIMIT + "margin"
 signal became_active
 ## Emitted when the PhantomCamera2D becomes inactive.
 signal became_inactive
-## Emitted when follow_target changes
-signal follow_target_changed
 
 ## Emitted when the Camera2D starts to tween to the PhantomCamera2D.
 signal tween_started
@@ -449,8 +447,8 @@ func _enter_tree() -> void:
 	update_limit_all_sides()
 
 func _exit_tree() -> void:
-	if _has_valid_pcam_owner():
-		get_pcam_host_owner().pcam_removed_from_scene(self)
+	if Properties.pcam_host_owner:
+		Properties.pcam_host_owner.pcam_removed_from_scene(self)
 
 	Properties.pcam_exit_tree(self)
 
@@ -806,21 +804,18 @@ func get_follow_mode() -> int:
 
 ## Assigns a new Node2D as the Follow Target property.
 func set_follow_target_node(value: Node2D) -> void:
-	if Properties.follow_target_node == value:
-		return
 	Properties.follow_target_node = value
-	Properties.should_follow = Properties.follow_target_node != null
-	follow_target_changed.emit()
+	Properties.should_follow = true
 ## Erases the current Node2D from the Follow Target property.
 func erase_follow_target_node() -> void:
-	if Properties.follow_target_node == null:
-		return
-	Properties.follow_target_node = null
 	Properties.should_follow = false
-	follow_target_changed.emit()
+	Properties.follow_target_node = null
 ## Gets the current Node2D target property.
 func get_follow_target_node():
-	return Properties.follow_target_node
+	if Properties.follow_target_node:
+		return Properties.follow_target_node
+	else:
+		printerr("No Follow Target Node assigned")
 
 
 ## Assigns a new Path2D to the Follow Path property.

@@ -2,6 +2,7 @@ extends Area2D
 
 
 
+
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.count_key += 1
@@ -9,4 +10,4 @@ func _on_body_entered(body):
 			body.has_all_key = true
 		else:
 			body.has_all_key = false
-	queue_free()
+		self.queue_free()

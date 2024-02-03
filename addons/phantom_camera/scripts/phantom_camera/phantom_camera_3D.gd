@@ -36,8 +36,6 @@ const CAMERA_3D_RESOURCE_PROPERTY_NAME: StringName = "camera_3D_resource"
 signal became_active
 ## Emitted when the PhantomCamera3D becomes inactive.
 signal became_inactive
-## Emitted when follow_target changes
-signal follow_target_changed
 
 ## Emitted when the Camera3D starts to tween to the PhantomCamera3D.
 signal tween_started
@@ -59,7 +57,7 @@ var Properties: Object = preload("res://addons/phantom_camera/scripts/phantom_ca
 var follow_distance: float = 1:
 	set(value):
 		follow_distance = value
-		if is_instance_valid(Properties.follow_target_node) and Properties.follow_mode != Constants.FollowMode.THIRD_PERSON:
+		if is_instance_valid(Properties.follow_target_node):
 			set_global_position(_get_target_position_offset())
 	get:
 		return follow_distance
@@ -213,7 +211,7 @@ func _get_property_list() -> Array:
 				"usage": PROPERTY_USAGE_DEFAULT,
 			})
 		if _should_look_at:
-			if look_at_mode_enum == LookAtMode.SIMPLE or look_at_mode_enum == LookAtMode.GROUP:
+			if look_at_mode_enum == LookAtMode.SIMPLE:
 				property_list.append({
 					"name": LOOK_AT_TARGET_OFFSET_PROPERTY_NAME,
 					"type": TYPE_VECTOR3,
@@ -317,8 +315,6 @@ func _set(property: StringName, value) -> bool:
 	if property == LOOK_AT_TARGET_PROPERTY_NAME:
 		_look_at_target_path = value
 		var value_node_path: NodePath = value as NodePath
-		if not is_node_ready(): await ready
-		
 		if not value_node_path.is_empty():
 			_should_look_at = true
 			if has_node(_look_at_target_path):
@@ -486,8 +482,8 @@ func _enter_tree() -> void:
 
 
 func _exit_tree() -> void:
-	if _has_valid_pcam_owner():
-		get_pcam_host_owner().pcam_removed_from_scene(self)
+	if Properties.pcam_host_owner:
+		Properties.pcam_host_owner.pcam_removed_from_scene(self)
 
 	Properties.pcam_exit_tree(self)
 
@@ -655,16 +651,15 @@ func _process(delta: float) -> void:
 							if is_instance_valid(_follow_spring_arm_node):
 								if not get_parent() == _follow_spring_arm_node:
 									var follow_target: Node3D = Properties.follow_target_node
-									_follow_spring_arm_node.set_rotation_degrees(get_rotation_degrees())
+#									_follow_spring_arm_node.set_script(load("res://addons/phantom_camera/scripts/phantom_camera/third_person/third_person_mouse_follow.gd"))
+									_follow_spring_arm_node.set_rotation_degrees(rotation_degrees)
 									_follow_spring_arm_node.set_length(follow_distance)
 									_follow_spring_arm_node.set_collision_mask(_follow_spring_arm_collision_mask)
 									_follow_spring_arm_node.set_shape(_follow_spring_arm_shape)
 									_follow_spring_arm_node.set_margin(_follow_spring_arm_margin)
-									_follow_spring_arm_node.set_global_position(_get_target_position_offset()) # Ensure the PCam3D starts at the right position at runtime
 
 									if not is_tween_on_load():
 										Properties.has_tweened = true
-
 									reparent(_follow_spring_arm_node)
 
 								_interpolate_position(
@@ -686,12 +681,12 @@ func _process(delta: float) -> void:
 			LookAtMode.GROUP:
 				if _has_look_at_target_group:
 					if _look_at_group_nodes.size() == 1:
-						look_at(_look_at_group_nodes[0].get_global_position() + look_at_target_offset)
+						look_at(_look_at_group_nodes[0].get_global_position())
 					elif _look_at_group_nodes.size() > 1:
 						var bounds: AABB = AABB(_look_at_group_nodes[0].get_global_position(), Vector3.ZERO)
 						for node in _look_at_group_nodes:
 							bounds = bounds.expand(node.get_global_position())
-						look_at(bounds.get_center() + look_at_target_offset)
+						look_at(bounds.get_center())
 
 
 func _get_target_position_offset() -> Vector3:
@@ -721,25 +716,6 @@ func _get_raw_unprojected_position() -> Vector2:
 
 func _on_dead_zone_changed() -> void:
 	set_global_position( _get_position_offset_distance() )
-
-func _set_layer(current_layers: int, layer_number: int, value: bool) -> int:
-	var mask: int = current_layers
-	
-	# From https://github.com/godotengine/godot/blob/51991e20143a39e9ef0107163eaf283ca0a761ea/scene/3d/camera_3d.cpp#L638
-	if layer_number < 1 or layer_number > 20:
-		printerr("Render layer must be between 1 and 20.")
-	else:
-		if value:
-			mask |= 1 << (layer_number - 1)
-		else:
-			mask &= ~(1 << (layer_number - 1))
-
-	return mask
-
-func _has_valid_pcam_owner() -> bool:
-	if not is_instance_valid(get_pcam_host_owner()): return false
-	if not is_instance_valid(get_pcam_host_owner().camera_3D): return false
-	return true
 
 #endregion
 
@@ -866,21 +842,18 @@ func get_follow_mode() -> int:
 
 ## Assigns a new Node3D as the Follow Target.
 func set_follow_target_node(value: Node3D) -> void:
-	if Properties.follow_target_node == value:
-		return
 	Properties.follow_target_node = value
-	Properties.should_follow = Properties.follow_target_node != null
-	follow_target_changed.emit()
+	Properties.should_follow = true
 ## Removes the current Node3D Follow Target.
 func erase_follow_target_node() -> void:
-	if Properties.follow_target_node == null:
-		return
-	Properties.follow_target_node = null
 	Properties.should_follow = false
-	follow_target_changed.emit()
+	Properties.follow_target_node = null
 ## Gets the current Node3D target.
 func get_follow_target_node():
-	return Properties.follow_target_node
+	if Properties.follow_target_node:
+		return Properties.follow_target_node
+	else:
+		printerr("No Follow Target Node assigned")
 
 
 ## Assigns a new Path3D to the Follow Path property.
@@ -1008,8 +981,6 @@ func get_spring_arm_spring_length() -> float:
 ## Assigns a new Third Person SpringArm3D Collision Mask value.
 func set_spring_arm_collision_mask(value: int) -> void:
 	_follow_spring_arm_collision_mask = value
-func set_collision_mask_value(layer_number: int, value: bool) -> void:
-	_follow_spring_arm_collision_mask = _set_layer(_follow_spring_arm_collision_mask, layer_number, value)
 ## Gets Third Person SpringArm3D Collision Mask value.
 func get_spring_arm_collision_mask() -> int:
 	return _follow_spring_arm_collision_mask
@@ -1069,11 +1040,6 @@ func append_look_at_group_node_array(value: Array[Node3D]) -> void:
 			_has_look_at_target_group = true
 		else:
 			printerr(val, " is already part of Look At Group")
-## Sets array of type Node3D to Look At Group array.
-func set_look_at_group_node_array(value: Array[Node3D]) -> void:
-	_look_at_group_nodes.clear()
-	_look_at_group_nodes.append_array(value)
-	_has_look_at_target_group = _look_at_group_nodes.size() > 0
 ## Removes Node3D from Look At Group array.
 func erase_look_at_group_node(value: Node3D) -> void:
 	_look_at_group_nodes.erase(value)
@@ -1108,19 +1074,6 @@ func set_camera_cull_mask(value: int) -> void:
 		set_camera_3D_resource(null) # Clears resource from PCam instance
 	else:
 		_camera_3D_resouce_default.cull_mask = value
-	if is_active(): get_pcam_host_owner().camera_3D.cull_mask = value
-func set_cull_mask_value(layer_number: int, value: bool) -> void:
-	var mask: int = _set_layer(get_camera_cull_mask(), layer_number, value)
-	if get_camera_3D_resource():
-		_camera_3D_resouce_default.cull_mask = mask
-		_camera_3D_resouce_default.h_offset = _camera_3D_resouce.h_offset
-		_camera_3D_resouce_default.v_offset = _camera_3D_resouce.v_offset
-		_camera_3D_resouce_default.fov = _camera_3D_resouce.fov
-		set_camera_3D_resource(null) # Clears resource from PCam instance
-	else:
-		_camera_3D_resouce_default.cull_mask = mask
-	if is_active(): get_pcam_host_owner().camera_3D.cull_mask = mask
-	
 ## Gets the Camera3D fov value assigned this PhantomCamera. The duration value is in seconds.
 func get_camera_cull_mask() -> int:
 	if get_camera_3D_resource():
@@ -1139,7 +1092,6 @@ func set_camera_h_offset(value: float) -> void:
 		set_camera_3D_resource(null) # Clears resource from PCam instance
 	else:
 		_camera_3D_resouce_default.h_offset = value
-	if is_active(): get_pcam_host_owner().camera_3D.h_offset = value
 ## Gets the Camera3D fov value assigned this PhantomCamera. The duration value is in seconds.
 func get_camera_h_offset() -> float:
 	if get_camera_3D_resource():
@@ -1158,7 +1110,6 @@ func set_camera_v_offset(value: float) -> void:
 		set_camera_3D_resource(null) # Clears resource from PCam instance
 	else:
 		_camera_3D_resouce_default.v_offset = value
-	if is_active(): get_pcam_host_owner().camera_3D.v_offset = value
 ## Gets the Camera3D fov value assigned this PhantomCamera. The duration value is in seconds.
 func get_camera_v_offset() -> float:
 	if get_camera_3D_resource():
@@ -1177,7 +1128,6 @@ func set_camera_fov(value: float) -> void:
 		set_camera_3D_resource(null) # Clears resource from PCam instance
 	else:
 		_camera_3D_resouce_default.fov = value
-	if is_active(): get_pcam_host_owner().camera_3D.fov = value
 ## Gets the Camera3D fov value assigned this PhantomCamera. The duration value is in seconds.
 func get_camera_fov() -> float:
 	if get_camera_3D_resource():

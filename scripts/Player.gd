@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 signal healthChanged
 
+@onready var all_interaction = []
+var can_interact = false
+
 @onready var jump_buffer_timer = $JumpBufferTimer
 @onready var coyote_timer = $CoyoteTimer
 @onready var double_jump_particles = $DoubleJumpParticle
@@ -45,14 +48,12 @@ var cur_health = 100
 
 func _ready():
 	GameManager.player = self
+	$interactLabel.visible = false
 
 func _physics_process(delta):
 	# Handle jump.
 	if is_death:
 		return
-	
-	if Input.is_action_just_pressed('side_attack'):
-		attack()
 	
 	if is_attacking:
 		slash_shape.disabled = false
@@ -109,6 +110,22 @@ func _physics_process(delta):
 	if health <= 0:
 		is_death = true
 		death()
+	
+	if GameManager.room_open:
+		var lockedRoom = get_node_or_null("../Locked_Room_1")
+
+		if is_instance_valid(lockedRoom):
+			lockedRoom.queue_free()
+		else:
+			return
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if can_interact:
+		if Input.is_action_just_pressed("interact"):
+			execute_interaction()
+	if Input.is_action_just_pressed('side_attack'):
+		attack()
+
 
 func attack():
 	swing_sound.play()
@@ -185,3 +202,34 @@ func _on_side_attack_body_entered(body):
 			critical_particle.emitting = true
 		else:
 			body.health -= strength
+
+
+
+### Interaction Method
+func _on_actionable_finder_area_entered(area):
+	all_interaction.insert(0, area)
+	$interactLabel.visible = true
+	can_interact = true
+
+
+func _on_actionable_finder_area_exited(area):
+	all_interaction.erase(area)
+	$interactLabel.visible = false
+	can_interact = false
+
+func execute_interaction():
+	if all_interaction:
+		var cur_interaction = all_interaction[0]
+		match cur_interaction.interact_value:
+			"print" : print("hello")
+			"locked_room" : DialogueManager.show_dialogue_balloon(load("res://dialogue/sign 1.dialogue"), "menyala")
+			"sign" : 
+				if count_key >= 7:
+					DialogueManager.show_dialogue_balloon(load("res://dialogue/paduka.dialogue"), "paduka")
+					var bossGate = get_node_or_null("../Boss_Door")
+					if is_instance_valid(bossGate):
+						bossGate.queue_free()
+					else:
+						return
+				else:
+					DialogueManager.show_dialogue_balloon(load("res://dialogue/boss door.dialogue"), "boss")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4cvuv1okj3dy"]
+
+[ext_resource type="Script" path="res://scripts/dungeon_cutscene.gd" id="1_fcony"]
+
+[node name="Dungeon_Cutscene" type="Node2D"]
+script = ExtResource("1_fcony")
