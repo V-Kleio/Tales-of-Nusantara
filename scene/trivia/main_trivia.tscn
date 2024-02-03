@@ -188,6 +188,7 @@ texture_hover = ExtResource("14_bnyeb")
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_wiki0")
 volume_db = -20.0
+autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="opsi_0" to="." method="_on_opsi_0_pressed"]

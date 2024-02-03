@@ -67,10 +67,6 @@ texture = ExtResource("1_c47nx")
 [node name="CameraFollow" type="Camera2D" parent="."]
 position = Vector2(-1, -421)
 zoom = Vector2(0.92, 0.92)
-limit_left = -2016
-limit_top = -1008
-limit_right = 2016
-limit_bottom = 168
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="CameraFollow"]
