@@ -10,6 +10,4 @@ func _on_body_entered(body):
 			body.has_all_key = true
 		else:
 			body.has_all_key = false
-		print(body.count_key)
-		print(body.has_all_key)
 		self.queue_free()

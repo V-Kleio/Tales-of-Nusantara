@@ -14,6 +14,11 @@ var can_interact = false
 @onready var slash_shape = $SideAttack/SideAttackHitbox
 @onready var iframe = $Iframe
 @onready var death_particle = $DeathParticle
+@onready var hit_particle = $HitParticle
+@onready var jump_sound = $JumpSound
+@onready var attack_sound = $AttackSound
+@onready var hit_sound = $HitSound
+@onready var swing_sound = $SwingSound
 
 var MAX_SPEED: int = 600 # The max speed of the character
 var FRICTION: int = 25 # The normal step for the speed to reach 0
@@ -123,9 +128,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 
 func attack():
+	swing_sound.play()
 	is_attacking = true
 
 func attacked():
+	hit_sound.play()
 	is_attacked = true
 	is_iframe = true
 	iframe.start()
@@ -145,6 +152,7 @@ func death_by_spikes():
 	healthChanged.emit()
 
 func jump() -> void:
+	jump_sound.play()
 	velocity.y = JUMP_VELOCITY
 	jump_buffer_timer.stop()
 	coyote_timer.stop()
@@ -170,9 +178,11 @@ func set_facing() -> void:
 	if Input.is_action_just_pressed('left'):
 		animated_sprite_2d.flip_h = true
 		slash_shape.position.x = -side_attack_distance
+		hit_particle.position.x = -120
 	if Input.is_action_just_pressed('right'):
 		animated_sprite_2d.flip_h = false
 		slash_shape.position.x = side_attack_distance
+		hit_particle.position.x = 120
 
 
 func _on_animated_sprite_2d_animation_looped():
@@ -184,6 +194,8 @@ func _on_animated_sprite_2d_animation_looped():
 
 func _on_side_attack_body_entered(body):
 	if body.is_in_group("enemy"):
+		attack_sound.play()
+		hit_particle.emitting = true
 		body.attacked()
 		if randi_range(1, 100) <= crit_chance:
 			body.health = body.health - (strength * 2)

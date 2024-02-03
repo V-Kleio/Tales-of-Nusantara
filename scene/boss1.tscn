@@ -1,9 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsgkkksswf40s"]
+[gd_scene load_steps=17 format=3 uid="uid://dsgkkksswf40s"]
 
 [ext_resource type="Script" path="res://scripts/boss1.gd" id="1_uiaxs"]
 [ext_resource type="Texture2D" uid="uid://dsjc1hvn0cehk" path="res://assets/enemy/BatuMenangis.png" id="2_dj5y2"]
 [ext_resource type="Texture2D" uid="uid://cgbhi66xgldna" path="res://assets/enemy/BatuMarahKenaHit1100x700.png" id="3_xi4wp"]
 [ext_resource type="Texture2D" uid="uid://bejdfhfcn62um" path="res://assets/enemy/BatuMarah.png" id="4_64ejl"]
+[ext_resource type="Texture2D" uid="uid://dhg3tcedt0n8x" path="res://assets/images/Dust Particle.png" id="5_8cukt"]
+[ext_resource type="AudioStream" uid="uid://x14oil5kd2hv" path="res://assets/audio/sfx/30_Earth_02-[AudioTrimmer.com].wav" id="6_8h7l5"]
+[ext_resource type="AudioStream" uid="uid://c6iwv8ridphkh" path="res://assets/audio/sfx/69_Enemy_death_01.wav" id="7_53mqb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ew4jo"]
 atlas = ExtResource("2_dj5y2")
@@ -70,8 +73,6 @@ initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 damping_min = 20.0
 damping_max = 20.0
-scale_min = 0.1
-scale_max = 0.1
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -125,10 +126,18 @@ one_shot = true
 self_modulate = Color(0.562045, 0.0191032, 0.0106201, 1)
 position = Vector2(0, 81)
 emitting = false
-amount = 1
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_4suc8")
+texture = ExtResource("5_8cukt")
 lifetime = 2.0
 one_shot = true
+
+[node name="LandingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8h7l5")
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_53mqb")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

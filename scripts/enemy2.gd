@@ -7,6 +7,9 @@ extends CharacterBody2D
 @onready var detect_particle = $DetectParticle
 @onready var spawn_particle = $SpawnParticle
 @onready var death_particle = $DeathParticle
+@onready var hurtbox = $Hurtbox
+@onready var death_sound = $DeathSound
+@onready var detect_sound = $DetectSound
 
 var health_item = preload("res://scene/health_collectible.tscn")
 var health_drop_chance = 20
@@ -30,9 +33,12 @@ func _ready():
 
 func _physics_process(_delta):
 	if is_event:
+		hitbox.disabled = true
+		hurtbox.disabled = true
 		return
 	
 	if is_death:
+		die()
 		return
 	
 	track_player()
@@ -47,8 +53,9 @@ func _physics_process(_delta):
 		speed = 300
 	
 	if health <= 0:
+		death_particle.emitting = true
+		death_sound.play()
 		is_death = true
-		die()
 
 func track_player():
 	if player == null:
@@ -76,7 +83,6 @@ func attacked():
 
 func die():
 	hitbox.disabled = true
-	death_particle.emitting = true
 
 
 func _on_animated_sprite_2d_animation_looped():
@@ -94,6 +100,8 @@ func _on_hitbox_body_entered(body):
 func _on_spawn_particle_finished():
 	animated_sprite_2d.visible = true
 	is_event = false
+	hitbox.disabled = false
+	hurtbox.disabled = false
 
 
 func _on_death_particle_finished():

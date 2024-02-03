@@ -1,9 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://b63lhhk4oe3jr"]
+[gd_scene load_steps=29 format=3 uid="uid://b63lhhk4oe3jr"]
 
 [ext_resource type="Script" path="res://scripts/buto_ijo.gd" id="1_f1gkq"]
 [ext_resource type="Texture2D" uid="uid://xaqjqav1m80l" path="res://assets/enemy/ButoIjoGotHitSprite1000x1200.png" id="1_lavh3"]
 [ext_resource type="Texture2D" uid="uid://t6h6nyqk3h8h" path="res://assets/enemy/ButoIjoAttackSprite1500x1300.png" id="1_nojxa"]
 [ext_resource type="Texture2D" uid="uid://dcpqmy0ks8y3g" path="res://assets/enemy/ButoIjoWalkingSprite1000x1200.png" id="1_xwmfu"]
+[ext_resource type="Texture2D" uid="uid://der3sdlrll58i" path="res://assets/enemy/ButoIjoAttackSprite2000x1300.png" id="3_88nhl"]
+[ext_resource type="Texture2D" uid="uid://wyxlkaitt2yb" path="res://assets/images/AttackCue.png" id="6_pvdhy"]
+[ext_resource type="Texture2D" uid="uid://dhg3tcedt0n8x" path="res://assets/images/Dust Particle.png" id="7_a2y23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_278v6"]
 atlas = ExtResource("1_nojxa")
@@ -14,6 +17,14 @@ atlas = ExtResource("1_nojxa")
 region = Rect2(1500, 0, 1500, 1300)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dq22b"]
+atlas = ExtResource("1_nojxa")
+region = Rect2(3000, 0, 1500, 1300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojvfp"]
+atlas = ExtResource("3_88nhl")
+region = Rect2(0, 0, 1800, 1300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mim1g"]
 atlas = ExtResource("1_nojxa")
 region = Rect2(3000, 0, 1500, 1300)
 
@@ -75,7 +86,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 9.0
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojvfp")
+}],
+"loop": true,
+"name": &"attack_cue",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mim1g")
+}],
+"loop": true,
+"name": &"downtime",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -86,7 +113,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hit",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -127,24 +154,40 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qixf"]
-radius = 76.0
+radius = 138.0
 height = 392.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efeo8"]
 size = Vector2(264.5, 441)
 
-[node name="ButoIjo" type="CharacterBody2D"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bloci"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3xwrw"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(120, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+damping_min = 20.0
+damping_max = 20.0
+
+[node name="ButoIjo" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_f1gkq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_si64q")
-animation = &"attack"
+animation = &"hit"
 autoplay = "walk"
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 16)
+position = Vector2(32, 29)
 shape = SubResource("CapsuleShape2D_7qixf")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -156,9 +199,38 @@ position = Vector2(-120, 0)
 shape = SubResource("RectangleShape2D_efeo8")
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 3.0
+one_shot = true
+
+[node name="DownTimeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+position = Vector2(0, 165)
+rotation = 1.5708
+scale = Vector2(4, 4)
+target_position = Vector2(0, 60)
+collision_mask = 2
+
+[node name="Attack" type="GPUParticles2D" parent="."]
+position = Vector2(0, -250)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_bloci")
+texture = ExtResource("6_pvdhy")
+one_shot = true
+
+[node name="DeathParticle" type="GPUParticles2D" parent="."]
+self_modulate = Color(0.510042, 0.0154833, 0.0086079, 1)
+position = Vector2(0, 202)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_3xwrw")
+texture = ExtResource("7_a2y23")
+lifetime = 3.0
 one_shot = true
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="DownTimeTimer" to="." method="_on_down_time_timer_timeout"]
+[connection signal="finished" from="DeathParticle" to="." method="_on_death_particle_finished"]

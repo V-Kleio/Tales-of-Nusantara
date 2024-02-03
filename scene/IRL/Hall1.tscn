@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://d4kr1g402oqyq"]
+[gd_scene load_steps=18 format=3 uid="uid://d4kr1g402oqyq"]
 
 [ext_resource type="Texture2D" uid="uid://dmnya5t2ghi8u" path="res://assets/asset background/Hallway1.png" id="1_c47nx"]
-[ext_resource type="Texture2D" uid="uid://4c7xipabqw51" path="res://assets/asset background/Hallway4.png" id="2_dyu76"]
 [ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="2_yjkmk"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_tv083"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="4_7egk8"]
@@ -73,12 +72,6 @@ offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_c47nx")
-
-[node name="TextureRect" type="TextureRect" parent="bg"]
-layout_mode = 0
-offset_right = 4210.0
-offset_bottom = 1184.0
-texture = ExtResource("2_dyu76")
 
 [node name="Nisa" type="Area2D" parent="."]
 visible = false
