@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsllc0gb3k44a"]
+[gd_scene load_steps=11 format=3 uid="uid://bsllc0gb3k44a"]
 
 [ext_resource type="Texture2D" uid="uid://bwuh64s68pt3p" path="res://assets/asset background/kelas1.png" id="1_ftf57"]
 [ext_resource type="Texture2D" uid="uid://dyn65mlkylkwp" path="res://assets/asset background/kelas2.png" id="2_1w6sb"]
 [ext_resource type="Texture2D" uid="uid://y883r844fo17" path="res://assets/character/IRL/BuSri.png" id="3_075vk"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="4_c7ipt"]
 [ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="5_7mrh1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_xixjy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_446lg"]
 size = Vector2(256, 1196)
@@ -55,13 +56,6 @@ position = Vector2(0, 464)
 position = Vector2(-1, 64)
 shape = SubResource("RectangleShape2D_2v6wj")
 
-[node name="fg" type="TextureRect" parent="."]
-offset_left = -2096.0
-offset_top = -1016.0
-offset_right = 2114.0
-offset_bottom = 168.0
-texture = ExtResource("2_1w6sb")
-
 [node name="BuSri" type="Area2D" parent="."]
 position = Vector2(-2096, -1016)
 
@@ -103,3 +97,22 @@ inactive_update_mode = 0
 
 [node name="CharacterBody2D" parent="Player" groups=["Player"] instance=ExtResource("5_7mrh1")]
 position = Vector2(648, 233)
+
+[node name="fg" type="TextureRect" parent="."]
+offset_left = -2096.0
+offset_top = -1016.0
+offset_right = 2114.0
+offset_bottom = 168.0
+texture = ExtResource("2_1w6sb")
+
+[node name="CameraFollow" type="Camera2D" parent="."]
+position = Vector2(648, -418)
+zoom = Vector2(0.92, 0.92)
+limit_left = -2096
+limit_top = -1016
+limit_right = 2112
+limit_bottom = 168
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="CameraFollow"]
+script = ExtResource("6_xixjy")
