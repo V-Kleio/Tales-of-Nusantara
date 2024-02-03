@@ -80,8 +80,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytvne"]
 size = Vector2(280, 562)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gmk17"]
-radius = 288.765
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5xyh"]
+radius = 139.0
+height = 624.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 disable_mode = 2
@@ -103,7 +104,7 @@ collision_layer = 0
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder"]
-shape = SubResource("CircleShape2D_gmk17")
+shape = SubResource("CapsuleShape2D_h5xyh")
 
 [node name="interactLabel" type="Sprite2D" parent="."]
 z_index = 20

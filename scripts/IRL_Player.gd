@@ -97,10 +97,15 @@ func execute_interaction():
 				else:
 					get_tree().change_scene_to_file("res://scene/cutscene_post_trivia.tscn")
 			"hall_1" : get_tree().change_scene_to_file("res://scene/IRL/Hall1.tscn")
-			"TT" : 
+			"TT" :
 				if GameManager.tt_count < 1:
 					get_tree().change_scene_to_file("res://scene/cutscene_pre_tt.tscn")
 				else:
 					get_tree().change_scene_to_file("res://scene/cutscene_post_tt.tscn")
 			"class_door" : get_tree().change_scene_to_file("res://scene/IRL/Classroom.tscn")
 			"hall_2" : get_tree().change_scene_to_file("res://scene/IRL/Hall2.tscn")
+			"rps" :
+				if GameManager.rps_count < 1:
+					get_tree().change_scene_to_file("res://scene/cutscene_pre_rps.tscn")
+				else:
+					get_tree().change_scene_to_file("res://scene/cutscene_post_rps.tscn")

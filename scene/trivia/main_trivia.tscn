@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdoticcdod58y"]
+[gd_scene load_steps=16 format=3 uid="uid://cdoticcdod58y"]
 
 [ext_resource type="Script" path="res://scripts/trivia/main_trivia.gd" id="1_3quwn"]
 [ext_resource type="Texture2D" uid="uid://brcnblph7ffdb" path="res://assets/Trivia/BackgroundTrivia.png" id="2_yysjm"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ih1djrk46f2n" path="res://assets/images/back.png" id="13_g418b"]
 [ext_resource type="Texture2D" uid="uid://u2gcquu2khr" path="res://assets/Trivia/Health.png" id="13_r8luk"]
 [ext_resource type="Texture2D" uid="uid://cs5y1381lfjdc" path="res://assets/images/backhover.png" id="14_bnyeb"]
+[ext_resource type="AudioStream" uid="uid://d7nvq623lsks" path="res://assets/audio/music/Theme Song/School.mp3" id="15_wiki0"]
 
 [node name="main_trivia" type="Control"]
 layout_mode = 3
@@ -183,6 +184,11 @@ grow_horizontal = 0
 texture_normal = ExtResource("13_g418b")
 texture_pressed = ExtResource("14_bnyeb")
 texture_hover = ExtResource("14_bnyeb")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_wiki0")
+volume_db = -20.0
+bus = &"Music"
 
 [connection signal="pressed" from="opsi_0" to="." method="_on_opsi_0_pressed"]
 [connection signal="pressed" from="opsi_1" to="." method="_on_opsi_1_pressed"]

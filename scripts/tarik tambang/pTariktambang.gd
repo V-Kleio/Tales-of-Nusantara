@@ -52,10 +52,9 @@ func player_movement(delta):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group('block'):
 		win.show()
-		Stats.stregth += 1
+		Stats.strength *= 2
 		print('menang')
 		str.show()
-		print(Stats.stregth)
 		game_over.emit()
 
 

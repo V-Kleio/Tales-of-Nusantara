@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cl642q5ghqwp"]
+[gd_scene load_steps=12 format=3 uid="uid://cl642q5ghqwp"]
 
 [ext_resource type="PackedScene" uid="uid://bh5dnpks4vb1" path="res://scene/tarik tambang/pTariktambang.tscn" id="1_crck6"]
 [ext_resource type="Texture2D" uid="uid://y7k6048r3jr4" path="res://assets/TugOfWar/BackgroundTambang.png" id="1_dapy1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/tarik tambang/almost_block.gd" id="5_enw6y"]
 [ext_resource type="Texture2D" uid="uid://ih1djrk46f2n" path="res://assets/images/back.png" id="7_e1g03"]
 [ext_resource type="Texture2D" uid="uid://cs5y1381lfjdc" path="res://assets/images/backhover.png" id="8_wogch"]
+[ext_resource type="AudioStream" uid="uid://d7nvq623lsks" path="res://assets/audio/music/Theme Song/School.mp3" id="9_gqj33"]
 
 [sub_resource type="GDScript" id="GDScript_f73iq"]
 script/source = "extends Node2D
@@ -69,6 +70,11 @@ offset_bottom = 153.0
 texture_normal = ExtResource("7_e1g03")
 texture_pressed = ExtResource("8_wogch")
 texture_hover = ExtResource("8_wogch")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gqj33")
+volume_db = -20.0
+bus = &"Music"
 
 [connection signal="input_event" from="playerTarikTambang" to="." method="_on_player_tarik_tambang_input_event"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

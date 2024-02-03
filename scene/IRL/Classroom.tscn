@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsllc0gb3k44a"]
+[gd_scene load_steps=15 format=3 uid="uid://20os0vvqdq44"]
 
 [ext_resource type="Texture2D" uid="uid://bwuh64s68pt3p" path="res://assets/asset background/kelas1.png" id="1_ftf57"]
 [ext_resource type="Texture2D" uid="uid://dyn65mlkylkwp" path="res://assets/asset background/kelas2.png" id="2_1w6sb"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="5_7mrh1"]
 [ext_resource type="PackedScene" uid="uid://cv7udjtboq74r" path="res://scene/interact/actionable.tscn" id="6_fcv6x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_xixjy"]
+[ext_resource type="Script" path="res://scene/interact/actionable.gd" id="8_4jja3"]
+[ext_resource type="AudioStream" uid="uid://d7nvq623lsks" path="res://assets/audio/music/Theme Song/School.mp3" id="9_80i4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_446lg"]
 size = Vector2(256, 1196)
@@ -19,6 +21,9 @@ size = Vector2(4050, 138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cg57g"]
 size = Vector2(648, 744)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11j2y"]
+size = Vector2(390, 908.5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -117,3 +122,20 @@ texture = ExtResource("3_075vk")
 position = Vector2(956, -300)
 shape = SubResource("RectangleShape2D_cg57g")
 debug_color = Color(0.847059, 0, 0.901961, 0.419608)
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(2, -2)
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("8_4jja3")
+interact_value = "hall_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(-1900, -455.25)
+shape = SubResource("RectangleShape2D_11j2y")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_80i4x")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

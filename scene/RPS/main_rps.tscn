@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bs05uy8a6itdb"]
+[gd_scene load_steps=24 format=3 uid="uid://bs05uy8a6itdb"]
 
 [ext_resource type="Script" path="res://scripts/RPS/main_RFS.gd" id="1_wfbta"]
 [ext_resource type="Texture2D" uid="uid://cpw7jxqmlsbx" path="res://assets/RPS/RPS/bg.png" id="2_d8cgl"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://8recwvjit5oy" path="res://assets/RPS/RPS/seri.png" id="20_tled4"]
 [ext_resource type="Texture2D" uid="uid://ih1djrk46f2n" path="res://assets/images/back.png" id="21_irmce"]
 [ext_resource type="Texture2D" uid="uid://cs5y1381lfjdc" path="res://assets/images/backhover.png" id="22_tf166"]
+[ext_resource type="AudioStream" uid="uid://d7nvq623lsks" path="res://assets/audio/music/Theme Song/School.mp3" id="23_xxxyf"]
 
 [node name="main_RPS" type="Control"]
 layout_mode = 3
@@ -142,6 +143,11 @@ offset_bottom = 40.0
 texture_normal = ExtResource("21_irmce")
 texture_pressed = ExtResource("22_tf166")
 texture_hover = ExtResource("22_tf166")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_xxxyf")
+volume_db = -20.0
+bus = &"Music"
 
 [connection signal="mouse_entered" from="pinky_button" to="." method="_on_pinky_button_mouse_entered"]
 [connection signal="mouse_exited" from="pinky_button" to="." method="_on_pinky_button_mouse_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4kr1g402oqyq"]
+[gd_scene load_steps=15 format=3 uid="uid://d4kr1g402oqyq"]
 
 [ext_resource type="Texture2D" uid="uid://dmnya5t2ghi8u" path="res://assets/asset background/Hallway1.png" id="1_c47nx"]
 [ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="2_yjkmk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b30xbc716d4km" path="res://assets/asset background/Hallway2.png" id="5_240nf"]
 [ext_resource type="Script" path="res://scene/interact/actionable.gd" id="6_sbnhl"]
 [ext_resource type="Texture2D" uid="uid://qxcp1uchord7" path="res://assets/IRL/Raka.png" id="7_ecvrs"]
+[ext_resource type="AudioStream" uid="uid://d7nvq623lsks" path="res://assets/audio/music/Theme Song/School.mp3" id="8_vcjkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhdn2"]
 size = Vector2(256, 1174)
@@ -22,6 +23,9 @@ size = Vector2(448, 381)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a3pa"]
 size = Vector2(486, 546)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug7wr"]
+size = Vector2(184, 860)
 
 [node name="Node2D" type="Node2D"]
 
@@ -120,7 +124,7 @@ scale = Vector2(1.51186, 1.51186)
 texture = ExtResource("7_ecvrs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Raka"]
-position = Vector2(1288, -281.5)
+position = Vector2(1192, -285)
 shape = SubResource("RectangleShape2D_p48gx")
 
 [node name="classroom" type="Area2D" parent="."]
@@ -133,10 +137,19 @@ interact_value = "class_door"
 position = Vector2(14, -528)
 shape = SubResource("RectangleShape2D_5a3pa")
 
-[node name="hall 2" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1952, -464)
+collision_layer = 256
+collision_mask = 0
 script = ExtResource("6_sbnhl")
 interact_value = "hall_2"
 
-[node name="right" type="CollisionShape2D" parent="hall 2"]
-position = Vector2(1981, -426)
-shape = SubResource("RectangleShape2D_hhdn2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20, -55)
+shape = SubResource("RectangleShape2D_ug7wr")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_vcjkg")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

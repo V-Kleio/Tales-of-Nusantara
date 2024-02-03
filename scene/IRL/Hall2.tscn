@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://oo8ecv4liyfc"]
+[gd_scene load_steps=13 format=3 uid="uid://oo8ecv4liyfc"]
 
 [ext_resource type="Texture2D" uid="uid://c14p0n8jq188h" path="res://assets/asset background/Hallway3.png" id="1_386j6"]
 [ext_resource type="Texture2D" uid="uid://d0fpxh44ln0j6" path="res://assets/IRL/Nisa.png" id="1_njs7v"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2h0c1fanhkpn" path="res://scene/IRL/IRL_PLAYER.tscn" id="4_uooro"]
 [ext_resource type="Texture2D" uid="uid://4c7xipabqw51" path="res://assets/asset background/Hallway4.png" id="5_di0d1"]
 [ext_resource type="Script" path="res://scene/interact/actionable.gd" id="6_76d1q"]
+[ext_resource type="AudioStream" uid="uid://d7nvq623lsks" path="res://assets/audio/music/Theme Song/School.mp3" id="8_r1o5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wflx4"]
 size = Vector2(165, 512)
@@ -134,3 +135,9 @@ interact_value = "hall_1"
 [node name="left" type="CollisionShape2D" parent="actionable"]
 position = Vector2(-1997, -598)
 shape = SubResource("RectangleShape2D_usid7")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_r1o5w")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
