@@ -73,7 +73,6 @@ func _physics_process(delta):
 	
 	if health <= 0:
 		is_death = true
-		animated_sprite_2d.animation = "death"
 		die()
 
 func flip():
@@ -89,6 +88,7 @@ func flip():
 
 func attacked():
 	is_attacked = true
+	print(health)
 
 func die():
 	hitbox.disabled = true

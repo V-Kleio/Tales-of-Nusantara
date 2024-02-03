@@ -13,4 +13,4 @@ func _process(delta):
 
 func ended():
 	Dialogic.timeline_ended.disconnect(ended)
-	get_tree().change_scene_to_file("res://scene/dungeon.tscn")
+	get_tree().change_scene_to_file("res://scene/dungeon_cutscene.tscn")

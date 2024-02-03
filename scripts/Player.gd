@@ -37,7 +37,7 @@ var is_death = false
 var is_iframe = false
 
 var has_all_key = false
-var count_key = 6
+var count_key = 0
 
 var cur_health = 100
 
@@ -105,6 +105,14 @@ func _physics_process(delta):
 	if health <= 0:
 		is_death = true
 		death()
+	
+	if GameManager.room_open:
+		var lockedRoom = get_node_or_null("../Locked_Room_1")
+
+		if is_instance_valid(lockedRoom):
+			lockedRoom.queue_free()
+		else:
+			return
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if can_interact:
@@ -113,28 +121,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed('side_attack'):
 		attack()
 
-func _process(delta):
-	if GameManager.room_open:
-		var lockedRoom = get_node_or_null("../Locked_Room_1")
-
-		if is_instance_valid(lockedRoom):
-			lockedRoom.queue_free()
-		else:
-			return
-	if GameManager.boss_room:
-		var bossGate = get_node_or_null("../Boss_Door")
-		if is_instance_valid(bossGate):
-			bossGate.queue_free()
-		else:
-			return
-	
-	var gate_3 = get_node_or_null("../key3")
-	if gate_3 == null:
-		var GIM_Gate = get_node_or_null("../GIM Gate")
-		if is_instance_valid(GIM_Gate):
-			GIM_Gate.queue_free()
-		else:
-			return
 
 func attack():
 	is_attacking = true
@@ -228,5 +214,10 @@ func execute_interaction():
 			"sign" : 
 				if count_key >= 7:
 					DialogueManager.show_dialogue_balloon(load("res://dialogue/paduka.dialogue"), "paduka")
+					var bossGate = get_node_or_null("../Boss_Door")
+					if is_instance_valid(bossGate):
+						bossGate.queue_free()
+					else:
+						return
 				else:
 					DialogueManager.show_dialogue_balloon(load("res://dialogue/boss door.dialogue"), "boss")
