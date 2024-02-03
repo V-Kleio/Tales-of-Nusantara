@@ -3,35 +3,52 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var attack_timer = $AttackTimer
 @onready var hitbox = $Area2D/Hitbox
+@onready var down_time_timer = $DownTimeTimer
+@onready var player_detector = $PlayerDetector
+@onready var hurtbox = $Hurtbox
+@onready var attack = $Attack
+@onready var death_particle = $DeathParticle
 
 
 var max_speed = 100
 var speed = max_speed
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var strength = 75
+
+@export var health = 2000
+@export var strength = 75
 
 var player = null
 var is_attacking = false
+var is_death = false
 
 func _ready():
 	player = get_tree().get_first_node_in_group('player')
 
 func _physics_process(delta):
-	# Add the gravity.
+	
+	if is_death:
+		die()
+		return
 	
 	if !is_attacking:
-		animated_sprite_2d.animation = 'walk'
+		locate_player()
 		
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	locate_player()
+	
 	velocity.x = speed
 	move_and_slide()
+	
+	if health <= 0:
+		death_particle.emitting = true
+		is_death = true
 
 
 func locate_player():
 	if player.position.x > position.x:
+		player_detector.rotation_degrees = 270
+		hurtbox.position.x = -29
 		if player.position.x - position.x < 175:
 			speed = 0
 			animated_sprite_2d.animation = "idle"
@@ -42,6 +59,8 @@ func locate_player():
 			animated_sprite_2d.flip_h = true
 			hitbox.position.x = 120
 	elif player.position.x < position.x:
+		player_detector.rotation_degrees = 90
+		hurtbox.position.x = 29
 		if position.x - player.position.x < 175:
 			speed = 0
 			animated_sprite_2d.animation = 'idle'
@@ -52,21 +71,44 @@ func locate_player():
 			animated_sprite_2d.flip_h = false
 			hitbox.position.x = -120
 
+
+func attacked():
+	pass
+	
+func die():
+	hitbox.disabled = true
+
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
+		hitbox.disabled = true
 		attack_timer.start()
 		is_attacking = true
+		attack.emitting = true
+		animated_sprite_2d.animation = 'attack_cue'
 		speed = 0
 
 
 
 func _on_animated_sprite_2d_animation_looped():
 	if animated_sprite_2d.animation == 'attack':
-		is_attacking = false
-		speed = max_speed
+		hitbox.disabled = true
+		down_time_timer.start()
+		animated_sprite_2d.animation = 'downtime'
 
 
 func _on_attack_timer_timeout():
 	animated_sprite_2d.animation = 'attack'
-	player.attacked()
-	player.health -= strength
+	if player_detector.get_collider() == player:
+		hitbox.disabled = false
+		player.attacked()
+		player.health -= strength
+
+
+func _on_down_time_timer_timeout():
+	hitbox.disabled = false
+	is_attacking = false
+	speed = max_speed
+
+
+func _on_death_particle_finished():
+	queue_free()

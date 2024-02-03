@@ -30,9 +30,12 @@ func _ready():
 
 func _physics_process(delta):
 	if is_event:
+		hurtbox.disabled = true
+		hitbox.disabled = true
 		return
 	
 	if is_death:
+		die()
 		return
 	
 	if not is_on_floor():
@@ -66,8 +69,8 @@ func _physics_process(delta):
 			wall_check.rotation_degrees = 90
 	
 	if health <= 0:
+		death_particle.emitting = true
 		is_death = true
-		die()
 
 
 func flip():
@@ -88,7 +91,7 @@ func attacked():
 
 func die():
 	hitbox.disabled = true
-	death_particle.emitting = true
+	
 	
 func _on_animated_sprite_2d_animation_looped():
 	if animated_sprite_2d.animation == 'hit':
@@ -104,6 +107,8 @@ func _on_hitbox_body_entered(body):
 func _on_spawn_particle_finished():
 	is_event = false
 	animated_sprite_2d.visible = true
+	hurtbox.disabled = false
+	hitbox.disabled = false
 
 
 func _on_death_particle_finished():

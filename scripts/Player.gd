@@ -11,6 +11,7 @@ signal healthChanged
 @onready var slash_shape = $SideAttack/SideAttackHitbox
 @onready var iframe = $Iframe
 @onready var death_particle = $DeathParticle
+@onready var hit_particle = $HitParticle
 
 var MAX_SPEED: int = 600 # The max speed of the character
 var FRICTION: int = 25 # The normal step for the speed to reach 0
@@ -153,9 +154,11 @@ func set_facing() -> void:
 	if Input.is_action_just_pressed('left'):
 		animated_sprite_2d.flip_h = true
 		slash_shape.position.x = -side_attack_distance
+		hit_particle.position.x = -120
 	if Input.is_action_just_pressed('right'):
 		animated_sprite_2d.flip_h = false
 		slash_shape.position.x = side_attack_distance
+		hit_particle.position.x = 120
 
 
 func _on_animated_sprite_2d_animation_looped():
@@ -167,6 +170,7 @@ func _on_animated_sprite_2d_animation_looped():
 
 func _on_side_attack_body_entered(body):
 	if body.is_in_group("enemy"):
+		hit_particle.emitting = true
 		body.attacked()
 		if randi_range(1, 100) <= crit_chance:
 			body.health = body.health - (strength * 2)
