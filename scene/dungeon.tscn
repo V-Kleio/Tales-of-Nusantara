@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfwp568a685lc"]
+[gd_scene load_steps=22 format=3 uid="uid://cfwp568a685lc"]
 
 [ext_resource type="TileSet" uid="uid://c4eok1rsabwsw" path="res://ldtk/testing/tilesets/testing-tileset-64x64.res" id="1_8l2q7"]
 [ext_resource type="PackedScene" uid="uid://bn88qvcyxvxnj" path="res://scene/spikes.tscn" id="1_22eh7"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="6_8cm75"]
 [ext_resource type="Script" path="res://scripts/HPBar.gd" id="6_057dj"]
 [ext_resource type="Texture2D" uid="uid://bvg6fccwetgk1" path="res://assets/HealthBar400x100.png under.png" id="6_xtsr0"]
-[ext_resource type="PackedScene" uid="uid://dsgkkksswf40s" path="res://scene/boss1.tscn" id="7_57ej2"]
 [ext_resource type="Texture2D" uid="uid://77k6t1e5ymbk" path="res://assets/HealthBar400x100 over.png" id="7_bqpy0"]
 [ext_resource type="PackedScene" uid="uid://bvmgo7qwx1mw7" path="res://scene/checkpoint.tscn" id="8_5nare"]
 [ext_resource type="PackedScene" uid="uid://cv7udjtboq74r" path="res://scene/interact/actionable.tscn" id="15_fsie8"]
@@ -57646,21 +57645,12 @@ position = Vector2(4628, 82)
 [node name="CharacterBody2D7" parent="." instance=ExtResource("3_limpk")]
 position = Vector2(5841, 88)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("7_57ej2")]
-position = Vector2(13821, 547)
-enemy1_spawn_position = Vector2(13657, 1027)
-enemy2_spawn_position = Vector2(13519, 750)
-
 [node name="Checkpoint" parent="." instance=ExtResource("8_5nare")]
 position = Vector2(7140, -355)
 scale = Vector2(0.5, 0.5)
 
 [node name="Checkpoint2" parent="." instance=ExtResource("8_5nare")]
 position = Vector2(31, 794)
-scale = Vector2(0.5, 0.5)
-
-[node name="Checkpoint3" parent="." instance=ExtResource("8_5nare")]
-position = Vector2(12921, 983)
 scale = Vector2(0.5, 0.5)
 
 [node name="Checkpoint4" parent="." instance=ExtResource("8_5nare")]

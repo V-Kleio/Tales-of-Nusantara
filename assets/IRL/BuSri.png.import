@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://y883r844fo17"
-path="res://.godot/imported/BuSri.png-b5f0ce70eed441eb5e0bc22bc9d25ff5.ctex"
+path="res://.godot/imported/BuSri.png-170646645699deac574ae28d5f66d062.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/IRL/BuSri.png"
-dest_files=["res://.godot/imported/BuSri.png-b5f0ce70eed441eb5e0bc22bc9d25ff5.ctex"]
+source_file="res://assets/IRL/BuSri.png"
+dest_files=["res://.godot/imported/BuSri.png-170646645699deac574ae28d5f66d062.ctex"]
 
 [params]
 

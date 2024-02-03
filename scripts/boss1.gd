@@ -111,17 +111,23 @@ func _on_hitbox_body_entered(body):
 		body.health -= strength
 
 func summon():
-	for i in range(randi_range(1, 3)):
-		var enemy1_spawn = enemy1.instantiate()
-		enemy1_spawn.position = enemy1_spawn_position
-		enemy1_spawn.position.x = enemy1_spawn_position.x + (enemy1_spawn_spread * i)
-		get_parent().add_child(enemy1_spawn)
+	var enemy1_spawn_1 = enemy1.instantiate()
+	var enemy1_spawn_2 = enemy1.instantiate()
+	enemy1_spawn_1.position.x = 12868
+	enemy1_spawn_1.position.y = 1037
+	enemy1_spawn_2.position.x = 14385
+	enemy1_spawn_2.position.y = 1037
+	get_parent().add_child(enemy1_spawn_1)
+	get_parent().add_child(enemy1_spawn_2)
 	
-	for i in range(randi_range(1,2)):
-		var enemy2_spawn = enemy2.instantiate()
-		enemy2_spawn.position = enemy2_spawn_position
-		enemy2_spawn.position.x = enemy2_spawn_position.x + (enemy2_spawn_spread * i)
-		get_parent().add_child(enemy2_spawn)
+	var enemy2_spawn_1 = enemy2.instantiate()
+	var enemy2_spawn_2 = enemy2.instantiate()
+	enemy2_spawn_1.position.x = 13970
+	enemy2_spawn_1.position.y = 236
+	enemy2_spawn_2.position.x = 13449
+	enemy2_spawn_2.position.y = 236
+	get_parent().add_child(enemy2_spawn_1)
+	get_parent().add_child(enemy2_spawn_2)
 
 
 

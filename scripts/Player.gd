@@ -6,6 +6,8 @@ signal healthChanged
 @onready var all_interaction = []
 var can_interact = false
 
+var boss_batu = preload("res://scene/boss1.tscn")
+
 @onready var jump_buffer_timer = $JumpBufferTimer
 @onready var coyote_timer = $CoyoteTimer
 @onready var double_jump_particles = $DoubleJumpParticle
@@ -205,17 +207,7 @@ func _on_side_attack_body_entered(body):
 
 
 
-### Interaction Method
-func _on_actionable_finder_area_entered(area):
-	all_interaction.insert(0, area)
-	$interactLabel.visible = true
-	can_interact = true
-
-
-func _on_actionable_finder_area_exited(area):
-	all_interaction.erase(area)
-	$interactLabel.visible = false
-	can_interact = false
+	
 
 func execute_interaction():
 	if all_interaction:
@@ -225,6 +217,10 @@ func execute_interaction():
 			"locked_room" : DialogueManager.show_dialogue_balloon(load("res://dialogue/sign 1.dialogue"), "menyala")
 			"sign" : 
 				if count_key >= 7:
+					var summon_boss = boss_batu.instantiate()
+					summon_boss.position.x = 13821
+					summon_boss.position.y = 547
+					get_parent().add_child(summon_boss)
 					DialogueManager.show_dialogue_balloon(load("res://dialogue/paduka.dialogue"), "paduka")
 					var bossGate = get_node_or_null("../Boss_Door")
 					if is_instance_valid(bossGate):
@@ -233,3 +229,15 @@ func execute_interaction():
 						return
 				else:
 					DialogueManager.show_dialogue_balloon(load("res://dialogue/boss door.dialogue"), "boss")
+
+
+func _on_interaction_area_entered(area):
+	all_interaction.insert(0, area)
+	$interactLabel.visible = true
+	can_interact = true
+
+
+func _on_interaction_area_exited(area):
+	all_interaction.erase(area)
+	$interactLabel.visible = false
+	can_interact = false

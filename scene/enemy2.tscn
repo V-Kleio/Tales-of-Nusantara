@@ -129,7 +129,7 @@ emitting = false
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_61rn5")
 texture = ExtResource("4_wwtag")
-lifetime = 2.0
+lifetime = 0.5
 one_shot = true
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]

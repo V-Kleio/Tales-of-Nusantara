@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0fpxh44ln0j6"
-path="res://.godot/imported/Nisa.png-fc2245750f37363cfc29caa96f1e90dc.ctex"
+path="res://.godot/imported/Nisa.png-b77b27a2de412e4d0114a00dd294a3bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/IRL/Nisa.png"
-dest_files=["res://.godot/imported/Nisa.png-fc2245750f37363cfc29caa96f1e90dc.ctex"]
+source_file="res://assets/IRL/Nisa.png"
+dest_files=["res://.godot/imported/Nisa.png-b77b27a2de412e4d0114a00dd294a3bb.ctex"]
 
 [params]
 
