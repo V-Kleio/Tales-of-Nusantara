@@ -25,6 +25,7 @@ MetSys="res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 GameManager="*res://scripts/GameManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Stats="*res://scripts/stats.gd"
 
 [dialogic]
 

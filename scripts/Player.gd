@@ -28,10 +28,10 @@ var ACCELERATION = 50 # The normal step to reach the speed
 var JUMP_VELOCITY: int = -1800 # The height of the jump
 var GRAVITY: int = 5000 # The acceleration of gravity
 
-@export var max_health: int = 100
-@export var health: int = 100
-@export var strength: int = 10
-@export var crit_chance: int = 100
+var max_health: int = Stats.max_health
+var health: int = max_health
+var strength: int = Stats.strength
+var crit_chance: int = Stats.crit_chance
 
 var double_jump: int = 1 # Count the number of jump when the player jump
 var touch_ground: bool = true
