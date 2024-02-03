@@ -46,6 +46,8 @@ func _physics_process(delta):
 
 
 func locate_player():
+	if player == null:
+		return
 	if player.position.x > position.x:
 		player_detector.rotation_degrees = 270
 		hurtbox.position.x = -29

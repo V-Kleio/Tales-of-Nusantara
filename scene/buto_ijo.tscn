@@ -153,9 +153,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qixf"]
-radius = 138.0
-height = 392.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w20bw"]
+size = Vector2(236, 387)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efeo8"]
 size = Vector2(264.5, 441)
@@ -179,6 +178,8 @@ damping_max = 20.0
 [node name="ButoIjo" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_f1gkq")
+health = 3000
+strength = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -187,8 +188,8 @@ animation = &"hit"
 autoplay = "walk"
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(32, 29)
-shape = SubResource("CapsuleShape2D_7qixf")
+position = Vector2(23, 15.5)
+shape = SubResource("RectangleShape2D_w20bw")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
