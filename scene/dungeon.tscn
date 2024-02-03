@@ -57631,7 +57631,10 @@ offset_right = 1920.0
 offset_bottom = 1079.0
 texture = ExtResource("4_vgl07")
 
-[node name="HPBar" type="TextureProgressBar" parent="player/PhantomCamera2D/CanvasLayer" node_paths=PackedStringArray("player")]
+[node name="CanvasLayer2" type="CanvasLayer" parent="player/PhantomCamera2D"]
+
+[node name="HPBar" type="TextureProgressBar" parent="player/PhantomCamera2D/CanvasLayer2" node_paths=PackedStringArray("player")]
+z_index = 1
 offset_right = 400.0
 offset_bottom = 100.0
 texture_under = ExtResource("6_xtsr0")
