@@ -1,0 +1,31 @@
+[background arg="res://assets/asset background/background ruins.png" fade="0.0"]
+join "Buto Ijo" 3
+join luke 1
+"Buto Ijo": Sialan kau!!!
+"Buto Ijo": Apa yang ingin kau lakukan dengan Timun Mas ku??
+luke: ... (Timun Mas?)
+luke: Tidak usah banyak omong kau ..
+luke: .. RAKSASA HIJAU GENDUT, BAJINGAN
+Buto Ijo pun meninggal
+leave "Buto Ijo"
+join Ayu 3
+luke: AYUUU!!
+luke: LUKEE!!
+luke: Kamu gapapa kan?
+Ayu: Gapapa kok
+Ayu: Sekarang bukan waktunya mikirin aku
+Ayu: Kamu gapapa kan apalagi abis lawan Buto Ijo?
+luke: Gapapa kok
+luke: Buto Ijo? Jadi itu nama makhluk menjijikan tadi
+Ayu: Oh iya, kamu tidak tau yah. Buto Ijo itu salah satu cerita rakyat populer di Indonesia
+luke: Ohh. Bagaimana dengan Batu Menangis?
+Ayu: Oh itu juga salah satu cerita rakyat Indonesia
+Ayu: Jangan bilang kamu juga bertarung dengannya!?
+luke: Nggak kok (tapi boong) tadi cuma liat aja
+luke: Sudahlah sekarang baiknya kita pulang, orang tua mu pasti mengkhawatirkanmu
+Ayu: Baiklah, Tuan Pangeran Luke ✿◠‿◠)
+luke: Kita simpen cerita kita untuk lain waktu
+leave luke
+leave Ayu
+[background arg="res://assets/images/1920x1080-black-solid-color-background.jpg" fade="0.0"]
+Mereka berdua pun pulang kembali ke dunia asalnya

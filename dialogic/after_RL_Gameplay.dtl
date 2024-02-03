@@ -1,0 +1,11 @@
+[background arg="res://assets/asset background/Hall1.png" fade="0.0"]
+join luke (2) 1
+luke: Ayu... Semoga kamu tidak apa-apa
+Luke pun membuka bukunya
+leave luke
+[background arg="res://assets/asset background/background ruins.png" fade="0.5"]
+join luke 1
+TOLOOOONGGGGG!
+luke: !!!!
+luke: Itu seperti Ayu!
+Luke pun berlari ke arah sumber suara

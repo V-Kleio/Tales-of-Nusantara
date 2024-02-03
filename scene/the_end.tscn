@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cedvvqbsar3ow"]
+
+[ext_resource type="Texture2D" uid="uid://b4j3so1aabsf2" path="res://assets/asset background/theend-orisit.png" id="1_o80a0"]
+[ext_resource type="Script" path="res://scripts/The End.gd" id="1_v7sfc"]
+[ext_resource type="Texture2D" uid="uid://br3kqs0ease52" path="res://assets/images/exit.png" id="3_2j5r0"]
+[ext_resource type="Texture2D" uid="uid://d1ij8ix3irwss" path="res://assets/images/exit-hover.png" id="4_moqro"]
+
+[node name="The End" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v7sfc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_o80a0")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -115.0
+offset_bottom = 107.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_2j5r0")
+texture_pressed = ExtResource("4_moqro")
+texture_hover = ExtResource("4_moqro")
+
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]

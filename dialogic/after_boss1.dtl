@@ -1,6 +1,20 @@
 [background arg="res://assets/asset background/background forest.png" fade="0.0"]
 join luke 1
-luke: hah hah hah... Batu Sialan!
 join batu_menangis 3
 batu_menangis: hiks hiks
-luke: <Empty Text Event>
+luke: ....
+batu_menangis: Maafin aku bu...
+luke: ....
+leave batu_menangis
+luke: Apa yang baru saja terjadi? Batu Menangis?
+luke: Ini… buku yang tadi? Yang di hutan belakang sekolah?
+Luke membuka bukunya
+[background arg="res://assets/asset background/Hall1.png" fade="0.0"]
+luke: Aku....
+luke: Aku pulang!!!!
+luke: Akhirnya, tapi bagaimana dengan Ayu?
+luke: Apakah dia ada di sekolah?
+Luke pun mencari Ayu di sekolah
+Beberapa saat kemudian
+luke: Aku tidak dapat menemukannya
+luke: Aku harus kembali besok setelah sekolah selesai

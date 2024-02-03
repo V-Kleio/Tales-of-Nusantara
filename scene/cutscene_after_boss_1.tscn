@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c31bsdhjk77xs"]
+
+[ext_resource type="Script" path="res://scripts/cutscene_after_boss_1.gd" id="1_2gccl"]
+
+[node name="Cutscene After Boss1" type="Node2D"]
+script = ExtResource("1_2gccl")

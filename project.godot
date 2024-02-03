@@ -30,14 +30,18 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Ayu": "res://dialogic/character/Ayu.dch",
 "Bu Sri": "res://dialogic/character/Bu Sri.dch",
+"Buto Ijo": "res://dialogic/character/Buto Ijo.dch",
 "Raka": "res://dialogic/character/Raka.dch",
 "batu_menangis": "res://dialogic/character/batu_menangis.dch",
 "luke": "res://dialogic/character/luke.dch",
 "nisa": "res://dialogic/character/nisa.dch"
 }
 directories/dtl_directory={
+"after_RL_Gameplay": "res://dialogic/after_RL_Gameplay.dtl",
 "after_boss1": "res://dialogic/after_boss1.dtl",
+"after_boss2": "res://dialogic/after_boss2.dtl",
 "locked_room": "res://dialogic/locked_room.dtl",
 "post_rps": "res://dialogic/post_rps.dtl",
 "post_trivia": "res://dialogic/post_trivia.dtl",
