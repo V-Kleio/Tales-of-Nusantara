@@ -30,9 +30,9 @@ Feel free to fork this repository and modify it at your will. You can also creat
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/V-Kleio"><img style="border-radius: 20%" src="https://avatars.githubusercontent.com/u/101655336?v=4" width="100px;" alt="V-Kleio"/><br /><sub><b>Rafael Marchel Darma Wijaya</b></sub></a><br /></td>
-       <td align="center" valign="top" width="14.28%"><a href="https://github.com/V-Kleio"><img style="border-radius: 20%" src="https://avatars.githubusercontent.com/u/101655336?v=4" width="100px;" alt="V-Kleio"/><br /><sub><b>Rafael Marchel Darma Wijaya</b></sub></a><br /></td>
-       <td align="center" valign="top" width="14.28%"><a href="https://github.com/V-Kleio"><img style="border-radius: 20%" src="https://avatars.githubusercontent.com/u/101655336?v=4" width="100px;" alt="V-Kleio"/><br /><sub><b>Rafael Marchel Darma Wijaya</b></sub></a><br /></td>
-       <td align="center" valign="top" width="14.28%"><a href="https://github.com/V-Kleio"><img style="border-radius: 20%" src="https://avatars.githubusercontent.com/u/101655336?v=4" width="100px;" alt="V-Kleio"/><br /><sub><b>Rafael Marchel Darma Wijaya</b></sub></a><br /></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kin-ark"><img style="border-radius: 20%" src="https://avatars.githubusercontent.com/u/88976627?v=4" width="100px;" alt="kin-ark"/><br /><sub><b>Muhammad Kinan Arkansyaddad</b></sub></a><br /></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/khalizkr"><img style="border-radius: 20%" src="https://avatars.githubusercontent.com/u/156478326?v=4" width="100px;" alt="khalizkr"/><br /><sub><b>Khaliz Kanefa Rabbani</b></sub></a><br /></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AlfianHanifFY"><img style="border-radius: 20%" src="https://avatars.githubusercontent.com/u/144709751?v=4" width="100px;" alt="AlfianHanifFY"/><br /><sub><b>Alfian Hanif F. Y.</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
